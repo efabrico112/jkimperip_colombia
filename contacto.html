@@ -6,121 +6,1229 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto | JK Imperip</title>
     <meta name="description"
-        content="Contáctanos para resolver tus dudas o hacer un pedido especial. JK Imperip – Medellín, Colombia.">
-    <link rel="stylesheet" href="index.css">
+        content="Contáctanos para pedidos, tallas o consultas. JK Imperip – Moda urbana colombiana.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all .3s
+        }
+
+        ul {
+            list-style: none
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            background: none;
+            outline: none
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --black2: #111111;
+            --black3: #1a1a1a;
+            --black4: #222222;
+            --white: #ffffff;
+            --cream: #faf8f5;
+            --accent: #e63946;
+            --accent-hover: #ff4757;
+            --pink: #e84393;
+            --pink-hover: #fd79a8;
+            --gray1: #333333;
+            --gray2: #555555;
+            --gray3: #888888;
+            --gray4: #aaaaaa;
+            --gray5: #cccccc;
+            --gold: #c9a84c;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, .92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            transition: all .35s
+        }
+
+        .header.scrolled {
+            background: rgba(10, 10, 10, .98);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, .4)
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 68px;
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+
+        .logo {
+            display: flex;
+            align-items: center
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            transition: opacity .3s
+        }
+
+        .logo:hover img {
+            opacity: 0.85
+        }
+
+        .footer .logo img,
+        .footer-col .logo img {
+            height: 40px
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.8rem
+        }
+
+        .nav-links a {
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray4);
+            position: relative;
+            padding: 4px 0;
+            transition: color .3s
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--white)
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--accent);
+            transition: width .35s
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.6rem
+        }
+
+        .nav-right a {
+            font-size: 1.05rem;
+            color: var(--gray4);
+            transition: color .3s
+        }
+
+        .nav-right a:hover {
+            color: var(--accent)
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+            cursor: pointer;
+            z-index: 2001
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 1.5px;
+            background: var(--white);
+            transition: all .3s;
+            display: block
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px)
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px)
+        }
+
+        /* ─── MOBILE MENU ─── */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--black);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.8rem;
+            transition: right .45s cubic-bezier(.25, .8, .25, 1)
+        }
+
+        .mobile-menu.open {
+            right: 0
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: var(--gray4);
+            transition: color .3s
+        }
+
+        .mobile-menu a:hover {
+            color: var(--white)
+        }
+
+        /* ─── MAIN CONTACT ─── */
+        .contact-page {
+            padding: 130px 0 0;
+            min-height: 100vh
+        }
+
+        .contact-container {
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 80px;
+            align-items: start;
+            min-height: calc(100vh - 200px)
+        }
+
+        /* ─── LEFT COLUMN ─── */
+        .contact-left {
+            padding-top: 30px
+        }
+
+        .contact-heading {
+            font-family: var(--font-display);
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.12;
+            margin-bottom: 22px;
+            letter-spacing: -1px
+        }
+
+        .contact-heading em {
+            font-style: italic;
+            color: var(--accent)
+        }
+
+        .contact-subtext {
+            color: var(--gray4);
+            font-size: 1.02rem;
+            line-height: 1.75;
+            margin-bottom: 50px;
+            max-width: 420px
+        }
+
+        /* Info items */
+        .info-items {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            margin-bottom: 45px
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px
+        }
+
+        .info-item-icon {
+            width: 46px;
+            height: 46px;
+            min-width: 46px;
+            border-radius: 50%;
+            border: 1px solid var(--gray1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .95rem;
+            color: var(--accent);
+            transition: all .3s
+        }
+
+        .info-item:hover .info-item-icon {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent)
+        }
+
+        .info-item-text strong {
+            display: block;
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+            color: var(--white)
+        }
+
+        .info-item-text p {
+            color: var(--gray3);
+            font-size: .9rem;
+            margin: 0;
+            line-height: 1.5
+        }
+
+        .info-item-text a {
+            color: var(--gray3);
+            transition: color .3s
+        }
+
+        .info-item-text a:hover {
+            color: var(--accent)
+        }
+
+        /* Social */
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px
+        }
+
+        .social-icons a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--gray1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--gray3);
+            transition: all .3s
+        }
+
+        .social-icons a:hover {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+            transform: translateY(-3px)
+        }
+
+        /* ─── RIGHT COLUMN: FORM CARD ─── */
+        .form-card {
+            background: var(--black2);
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .4)
+        }
+
+        /* Tabs */
+        .form-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, .07)
+        }
+
+        .form-tab {
+            flex: 1;
+            padding: 20px 24px;
+            font-size: .82rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--gray3);
+            cursor: pointer;
+            transition: all .35s;
+            position: relative;
+            background: transparent
+        }
+
+        .form-tab:first-child {
+            border-right: 1px solid rgba(255, 255, 255, .07)
+        }
+
+        .form-tab.active {
+            color: var(--white);
+            background: var(--black3)
+        }
+
+        .form-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent)
+        }
+
+        .form-tab:hover:not(.active) {
+            color: var(--gray5)
+        }
+
+        .form-tab i {
+            margin-right: 8px;
+            font-size: .78rem
+        }
+
+        /* Tab panels */
+        .tab-panel {
+            display: none;
+            padding: 38px 36px 42px
+        }
+
+        .tab-panel.active {
+            display: block
+        }
+
+        /* Form grid */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 18px
+        }
+
+        .form-group {
+            margin-bottom: 18px
+        }
+
+        .form-group.full {
+            grid-column: 1/-1
+        }
+
+        .form-label {
+            display: block;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--gray4)
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px 18px;
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: .92rem;
+            font-family: var(--font-body);
+            transition: all .3s
+        }
+
+        .form-input::placeholder {
+            color: var(--gray2);
+            font-size: .88rem
+        }
+
+        .form-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, .12)
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 140px
+        }
+
+        /* Chips / Tags */
+        .chips-label {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray4);
+            margin-bottom: 12px;
+            display: block
+        }
+
+        .chips-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 26px
+        }
+
+        .chip {
+            padding: 10px 22px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            border-radius: 50px;
+            font-size: .78rem;
+            font-weight: 500;
+            color: var(--gray4);
+            cursor: pointer;
+            transition: all .3s;
+            user-select: none;
+            background: transparent
+        }
+
+        .chip:hover {
+            border-color: var(--gray3);
+            color: var(--white)
+        }
+
+        .chip.selected {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+            font-weight: 600
+        }
+
+        /* Submit button */
+        .btn-submit {
+            width: 100%;
+            padding: 17px 30px;
+            background: var(--accent);
+            color: var(--white);
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all .35s;
+            cursor: pointer;
+            border: none
+        }
+
+        .btn-submit:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(230, 57, 70, .3)
+        }
+
+        .btn-submit:active {
+            transform: translateY(0)
+        }
+
+        /* Schedule Call panel */
+        .schedule-info {
+            text-align: center;
+            padding: 20px 0
+        }
+
+        .schedule-info .big-icon {
+            font-size: 3.2rem;
+            color: var(--accent);
+            margin-bottom: 20px
+        }
+
+        .schedule-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 12px
+        }
+
+        .schedule-info p {
+            color: var(--gray3);
+            font-size: .92rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            max-width: 380px;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 17px 40px;
+            background: #25D366;
+            color: var(--white);
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: all .35s
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, .3);
+            color: var(--white)
+        }
+
+        .btn-whatsapp i {
+            font-size: 1.2rem
+        }
+
+        .schedule-hours {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, .07)
+        }
+
+        .schedule-hours p {
+            color: var(--gray2);
+            font-size: .82rem;
+            margin: 0
+        }
+
+        .schedule-hours strong {
+            color: var(--gray4);
+            font-weight: 600
+        }
+
+        /* ─── Success message ─── */
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 50px 20px
+        }
+
+        .form-success.show {
+            display: block
+        }
+
+        .form-success .check-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--white);
+            animation: popIn .5s cubic-bezier(.17, .67, .29, 1.27)
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        .form-success h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 10px
+        }
+
+        .form-success p {
+            color: var(--gray3);
+            font-size: .9rem
+        }
+
+        /* ─── MAP ─── */
+        .map-section {
+            margin-top: 80px;
+            width: 100%;
+            height: 320px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: invert(1) contrast(.85) hue-rotate(180deg) saturate(.15) brightness(.8)
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, var(--black) 0%, transparent 30%, transparent 70%, var(--black) 100%);
+            pointer-events: none
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--black);
+            padding: 70px 0 25px;
+            border-top: 1px solid rgba(255, 255, 255, .05)
+        }
+
+        .footer-container {
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+            gap: 40px;
+            margin-bottom: 50px
+        }
+
+        .footer-col .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px
+        }
+
+        .footer-logo span {
+            color: var(--accent)
+        }
+
+        .footer-col>p {
+            color: var(--gray3);
+            font-size: .85rem;
+            line-height: 1.7
+        }
+
+        .footer-col h4 {
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 20px;
+            color: var(--gray3)
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, .6);
+            font-size: .85rem
+        }
+
+        .footer-col ul li a:hover {
+            color: #FFD600
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, .6);
+            font-size: .9rem;
+            transition: all .3s
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent)
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            padding-top: 22px;
+            text-align: center;
+            color: rgba(255, 255, 255, .35);
+            font-size: .75rem
+        }
+
+        /* ─── WhatsApp Floating ─── */
+        .wa-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, .4);
+            transition: all .35s
+        }
+
+        .wa-float:hover {
+            transform: scale(1.12) translateY(-3px);
+            box-shadow: 0 10px 35px rgba(37, 211, 102, .5);
+            color: #fff
+        }
+
+        .wa-float::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, .3);
+            animation: waPulse 2s infinite
+        }
+
+        @keyframes waPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0
+            }
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media(max-width:1024px) {
+            .nav-links {
+                display: none
+            }
+
+            .hamburger {
+                display: flex
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 50px
+            }
+
+            .contact-heading {
+                font-size: 2.8rem
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px
+            }
+        }
+
+        @media(max-width:600px) {
+            .header-inner {
+                height: 58px;
+                padding: 0 18px
+            }
+
+            .contact-container {
+                padding: 0 18px
+            }
+
+            .contact-page {
+                padding: 100px 0 0
+            }
+
+            .contact-heading {
+                font-size: 2.2rem
+            }
+
+            .contact-subtext {
+                font-size: .92rem
+            }
+
+            .form-row {
+                grid-template-columns: 1fr
+            }
+
+            .tab-panel {
+                padding: 26px 22px 30px
+            }
+
+            .form-tab {
+                padding: 15px 14px;
+                font-size: .7rem;
+                letter-spacing: 1px
+            }
+
+            .chip {
+                padding: 8px 16px;
+                font-size: .72rem
+            }
+
+            .map-section {
+                height: 240px;
+                margin-top: 50px
+            }
+
+            .footer-container {
+                padding: 0 18px
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- ========== HEADER ========== -->
+    <!-- ─── HEADER ─── -->
     <header class="header" id="header">
-        <div class="container">
-            <a href="index.html" class="logo">JK<span> Imperip</span></a>
+        <div class="header-inner">
+            <a href="index.html" class="logo"><img
+                    src="https://cdn.shopify.com/s/files/1/0999/1615/2913/files/image_Pippit_202602232041-removebg-preview.png?v=1771897354"
+                    alt="JK Imperip"></a>
             <ul class="nav-links">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="contacto.html" class="active">Contacto</a></li>
             </ul>
-            <div class="nav-icons">
-                <a href="https://wa.me/573000000000" title="WhatsApp" target="_blank" rel="noopener"><i
+            <div class="nav-right">
+                <a href="https://wa.me/573002963698" target="_blank" rel="noopener" title="WhatsApp"><i
                         class="fa-brands fa-whatsapp"></i></a>
-                <div class="hamburger" id="hamburger" aria-label="Menú">
-                    <span></span><span></span><span></span>
-                </div>
+                <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
+    <!-- ─── MOBILE MENU ─── -->
+    <nav class="mobile-menu" id="mobileMenu">
         <a href="index.html">Inicio</a>
         <a href="catalogo.html">Catálogo</a>
         <a href="contacto.html">Contacto</a>
-    </div>
+    </nav>
 
-    <!-- ========== CONTACT ========== -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-grid">
+    <!-- ─── CONTACT SECTION ─── -->
+    <section class="contact-page">
+        <div class="contact-container">
+            <div class="contact-layout">
+
+                <!-- LEFT COLUMN -->
                 <div class="contact-left">
-                    <h2>Hablemos.</h2>
-                    <p>¿Tienes dudas sobre tu pedido, tallas o quieres conocer más sobre nuestra colección? Estamos aquí
-                        para ayudarte.</p>
+                    <h1 class="contact-heading">Hablemos<br>de tu <em>estilo</em></h1>
+                    <p class="contact-subtext">Nos encanta conectar contigo. Completa el formulario y alguien de nuestro
+                        equipo te responderá lo antes posible.</p>
 
-                    <div class="contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <div>
-                            <strong>Ubicación</strong>
-                            <p>Medellín, Colombia</p>
+                    <div class="info-items">
+                        <div class="info-item">
+                            <div class="info-item-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="info-item-text">
+                                <strong>Ubicación</strong>
+                                <p>Medellín, Colombia</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="info-item-text">
+                                <strong>Email</strong>
+                                <p><a href="mailto:ventas@jkimperip.com">ventas@jkimperip.com</a></p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div class="info-item-text">
+                                <strong>WhatsApp</strong>
+                                <p><a href="https://wa.me/573002963698">+57 300 296 3698</a></p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-item-icon"><i class="fa-regular fa-clock"></i></div>
+                            <div class="info-item-text">
+                                <strong>Horario</strong>
+                                <p>Lunes a Viernes: 9:00 am – 7:00 pm<br>Sábados: 10:00 am – 4:00 pm</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <div>
-                            <strong>Email</strong>
-                            <p>ventas@jkimperip.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <div>
-                            <strong>WhatsApp</strong>
-                            <p>+57 300 000 0000</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fa-solid fa-clock"></i>
-                        <div>
-                            <strong>Horario de Atención</strong>
-                            <p>Lunes a Viernes: 9:00 am – 7:00 pm</p>
-                            <p>Sábados: 10:00 am – 4:00 pm</p>
-                        </div>
+
+                    <div class="social-icons">
+                        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
 
-                <div class="contact-form">
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <label for="name">Nombre completo</label>
-                            <input type="text" id="name" placeholder="Tu nombre" required>
+                <!-- RIGHT COLUMN: FORM -->
+                <div class="form-card">
+                    <!-- Tabs -->
+                    <div class="form-tabs">
+                        <button class="form-tab active" data-tab="message">
+                            <i class="fa-regular fa-envelope"></i> Enviar Mensaje
+                        </button>
+                        <button class="form-tab" data-tab="call">
+                            <i class="fa-brands fa-whatsapp"></i> Agendar Llamada
+                        </button>
+                    </div>
+
+                    <!-- Tab 1: Send Message -->
+                    <div class="tab-panel active" id="panel-message">
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="fname">Nombre</label>
+                                    <input class="form-input" type="text" id="fname" placeholder="Tu nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="femail">Email</label>
+                                    <input class="form-input" type="email" id="femail" placeholder="email@ejemplo.com"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="fcity">Ciudad</label>
+                                    <input class="form-input" type="text" id="fcity" placeholder="Tu ciudad">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="fphone">Teléfono</label>
+                                    <input class="form-input" type="tel" id="fphone" placeholder="+57 300 000 0000">
+                                </div>
+                            </div>
+
+                            <span class="chips-label">¿Qué te interesa?</span>
+                            <div class="chips-wrap">
+                                <div class="chip" data-value="Zapatillas">Zapatillas</div>
+                                <div class="chip" data-value="Conjuntos">Conjuntos</div>
+                                <div class="chip" data-value="Camisetas">Camisetas</div>
+                                <div class="chip" data-value="Deporte">Deporte</div>
+                                <div class="chip" data-value="Pedido Mayorista">Pedido Mayorista</div>
+                                <div class="chip" data-value="Otro">Otro</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="fmsg">Tu Mensaje</label>
+                                <textarea class="form-input" id="fmsg" placeholder="Cuéntanos qué necesitas..."
+                                    required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-submit">
+                                Enviar Mensaje <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </form>
+
+                        <!-- Success state -->
+                        <div class="form-success" id="formSuccess">
+                            <div class="check-circle"><i class="fa-solid fa-check"></i></div>
+                            <h3>¡Mensaje Enviado!</h3>
+                            <p>Gracias por escribirnos. Te responderemos en menos de 24 horas. 🎉</p>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Correo electrónico</label>
-                            <input type="email" id="email" placeholder="email@ejemplo.com" required>
+                    </div>
+
+                    <!-- Tab 2: Schedule Call -->
+                    <div class="tab-panel" id="panel-call">
+                        <div class="schedule-info">
+                            <div class="big-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                            <h3>Escríbenos por WhatsApp</h3>
+                            <p>La forma más rápida de contactarnos. Respuesta inmediata para consultas sobre tallas,
+                                disponibilidad y pedidos.</p>
+                            <a href="https://wa.me/573002963698?text=Hola%20JK%20Imperip%2C%20quiero%20información%20sobre%20sus%20productos"
+                                class="btn-whatsapp" target="_blank" rel="noopener">
+                                <i class="fa-brands fa-whatsapp"></i> Iniciar Chat
+                            </a>
+                            <div class="schedule-hours">
+                                <p><strong>Horario:</strong> Lun – Vie 9am a 7pm · Sáb 10am a 4pm</p>
+                                <p style="margin-top:6px"><strong>Número:</strong> +57 300 296 3698</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Asunto</label>
-                            <input type="text" id="subject" placeholder="¿En qué podemos ayudarte?">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" rows="5" placeholder="Escribe tu mensaje aquí..."
-                                required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-dark">Enviar Mensaje</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== FOOTER ========== -->
+    <!-- ─── MAP ─── -->
+    <div class="map-section">
+        <div class="map-overlay"></div>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.46110694518!2d-75.73645715!3d6.244203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428ef4e63e4c5%3A0xc09d32ee8a3e76f4!2sMedell%C3%ADn%2C%20Antioquia%2C%20Colombia!5e0!3m2!1ses!2s!4v1700000000000!5m2!1ses!2s"
+            allowfullscreen loading="lazy"></iframe>
+    </div>
+
+    <!-- ─── FOOTER ─── -->
     <footer class="footer">
-        <div class="container">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo"><img
+                            src="https://cdn.shopify.com/s/files/1/0999/1615/2913/files/image_Pippit_202602232041-removebg-preview.png?v=1771897354"
+                            alt="JK Imperip"></a>
+                    <p>Moda premium con sello colombiano. Diseñamos para quienes marcan tendencia. Envíos a todo el
+                        país.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Categorías</h4>
+                    <ul>
+                        <li><a href="catalogo.html">Calzado</a></li>
+                        <li><a href="catalogo.html">Zapatillas</a></li>
+                        <li><a href="catalogo.html">Conjuntos</a></li>
+                        <li><a href="index.html#buzos">Buzos</a></li>
+                        <li><a href="index.html#chaquetas">Chaquetas</a></li>
+                        <li><a href="catalogo.html">Deporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="#">Envíos y Devoluciones</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Pagos Seguros</h4>
+                    <p>Acepta Nequi, Daviplata, PSE, Visa, Mastercard y más. Compra con total tranquilidad.</p>
+                </div>
+            </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 JK Imperip. Todos los derechos reservados. Medellín, Colombia.</p>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp -->
-    <a href="https://wa.me/573000000000" class="whatsapp-btn" target="_blank" rel="noopener" title="WhatsApp"
-        aria-label="WhatsApp">
+    <!-- ─── WHATSAPP FLOATING ─── -->
+    <a href="https://wa.me/573002963698" class="wa-float" target="_blank" rel="noopener" title="Chatea con nosotros">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script src="main.js"></script>
+    <!-- ─── JAVASCRIPT ─── -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            /* ── Hamburger ── */
+            var hb = document.getElementById('hamburger');
+            var mm = document.getElementById('mobileMenu');
+            hb.addEventListener('click', function () {
+                hb.classList.toggle('active');
+                mm.classList.toggle('open');
+                document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+            });
+
+            /* ── Header scroll ── */
+            window.addEventListener('scroll', function () {
+                document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+            });
+
+            /* ── Form tabs ── */
+            var tabs = document.querySelectorAll('.form-tab');
+            var panels = document.querySelectorAll('.tab-panel');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].addEventListener('click', function () {
+                    var target = this.getAttribute('data-tab');
+                    for (var j = 0; j < tabs.length; j++) tabs[j].classList.remove('active');
+                    for (var k = 0; k < panels.length; k++) panels[k].classList.remove('active');
+                    this.classList.add('active');
+                    document.getElementById('panel-' + target).classList.add('active');
+                });
+            }
+
+            /* ── Chips selection ── */
+            var chips = document.querySelectorAll('.chip');
+            for (var c = 0; c < chips.length; c++) {
+                chips[c].addEventListener('click', function () {
+                    this.classList.toggle('selected');
+                });
+            }
+
+            /* ── Form submit ── */
+            var form = document.getElementById('contactForm');
+            var success = document.getElementById('formSuccess');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                form.style.display = 'none';
+                success.classList.add('show');
+
+                /* Auto-reset after 5s */
+                setTimeout(function () {
+                    form.reset();
+                    /* Deselect all chips */
+                    var allChips = document.querySelectorAll('.chip');
+                    for (var x = 0; x < allChips.length; x++) allChips[x].classList.remove('selected');
+                    form.style.display = 'block';
+                    success.classList.remove('show');
+                }, 5000);
+            });
+        });
+    </script>
 </body>
 
 </html>

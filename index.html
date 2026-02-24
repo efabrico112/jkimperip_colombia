@@ -4,150 +4,1925 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JK Imperip | Moda Urbana en Colombia</title>
+    <title>JK Imperip | Moda Urbana Colombia</title>
     <meta name="description"
-        content="Descubre la última colección de ropa urbana para hombre y mujer. Estilo, calidad y tendencia – JK Imperip Colombia.">
-    <link rel="stylesheet" href="index.css">
+        content="Ropa urbana premium para hombre y mujer. Estilo, calidad y tendencia. JK Imperip – Colombia.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ========================================
+           JK IMPERIP — Cantão-Inspired Design
+           ======================================== */
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #faf8f5;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            background: none;
+        }
+
+        :root {
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --cream: #faf8f5;
+            --cream2: #f3efe9;
+            --yellow: #FFD600;
+            --accent: #e63946;
+            --gold: #c9a84c;
+            --gray-light: #e8e4de;
+            --gray-mid: #a09a92;
+            --gray-dark: #6b665e;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Outfit', sans-serif;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* ==========================================
+           HEADER — Thin, Elegant, Minimal
+           ========================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(250, 248, 245, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.35s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 65px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover img {
+            opacity: 0.85;
+        }
+
+        .footer .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--gray-dark);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--black);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--accent);
+            transition: width 0.35s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-right a {
+            font-size: 1.05rem;
+            color: var(--gray-dark);
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        .nav-right .cart-count {
+            position: relative;
+        }
+
+        .nav-right .cart-count::after {
+            content: '0';
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            color: var(--white);
+            font-size: 0.55rem;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 1.5px;
+            background: var(--black);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--cream);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            transition: right 0.4s ease;
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--black);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+
+        /* ==========================================
+           HERO — Full-width editorial banner
+           ========================================== */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 92vh;
+            margin-top: 65px;
+            overflow: hidden;
+        }
+
+        .hero-slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .hero-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            background-size: cover;
+            background-position: center top;
+        }
+
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.05) 55%, rgba(0, 0, 0, 0.2) 100%);
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 12%;
+            left: 5%;
+            z-index: 10;
+            color: var(--white);
+            max-width: 520px;
+        }
+
+        .slide-tag {
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 6px 18px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            color: var(--white);
+        }
+
+        .slide-content h2 {
+            font-family: var(--font-display);
+            font-size: 3.6rem;
+            font-weight: 700;
+            line-height: 1.08;
+            margin-bottom: 14px;
+            font-style: italic;
+        }
+
+        .slide-content p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            margin-bottom: 28px;
+            opacity: 0.9;
+            line-height: 1.7;
+            max-width: 400px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 36px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            text-align: center;
+        }
+
+        .btn-dark {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn-dark:hover {
+            background: var(--accent);
+        }
+
+        .btn-outline-w {
+            background: transparent;
+            border: 1.5px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline-w:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background: #c62d39;
+        }
+
+        .btn-outline-dark {
+            background: transparent;
+            border: 1.5px solid var(--black);
+            color: var(--black);
+        }
+
+        .btn-outline-dark:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn i {
+            font-size: 0.7rem;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Slider Controls */
+        .hero-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            padding: 0 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 20;
+            pointer-events: none;
+        }
+
+        .hero-arrow {
+            pointer-events: all;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            background: rgba(0, 0, 0, 0.15);
+            color: var(--white);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .hero-arrow:hover {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 20;
+        }
+
+        .hero-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            transition: all 0.35s ease;
+            border: none;
+        }
+
+        .hero-dot.active {
+            background: var(--white);
+            width: 28px;
+            border-radius: 20px;
+        }
+
+        /* ==========================================
+           ANNOUNCEMENT BAR
+           ========================================== */
+        .announce-bar {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .announce-bar span {
+            color: var(--yellow);
+            font-weight: 700;
+        }
+
+        /* ==========================================
+           EDITORIAL SECTION — "Tú Eliges"
+           ========================================== */
+        .editorial {
+            padding: 90px 0;
+        }
+
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1.2fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .editorial-text {
+            padding-right: 20px;
+            align-self: center;
+        }
+
+        .editorial-text h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.1;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .editorial-text p {
+            color: var(--gray-dark);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        .editorial-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .editorial-card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .editorial-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .editorial-card-info {
+            padding: 16px 0;
+        }
+
+        .editorial-card-info h3 {
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .editorial-card-info a {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .editorial-card-info a:hover {
+            color: var(--accent);
+        }
+
+        /* ==========================================
+           SECTION TITLE — Elegant, Serif
+           ========================================== */
+        .section-title {
+            text-align: center;
+            padding: 70px 0 40px;
+        }
+
+        .section-title h2 {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--black);
+        }
+
+        /* ==========================================
+           PRODUCT GRID — Cantão style
+           ========================================== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            padding-bottom: 30px;
+        }
+
+        .pc {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .pc-img-wrap {
+            position: relative;
+            overflow: hidden;
+            background: var(--cream2);
+        }
+
+        .pc-img-wrap img {
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .pc:hover .pc-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .pc-tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent);
+            z-index: 5;
+        }
+
+        .pc-wish {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+            z-index: 5;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .pc-wish:hover,
+        .pc-wish.liked {
+            color: var(--accent);
+        }
+
+        /* Hover overlay with sizes + add to cart */
+        .pc-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 14px 16px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            z-index: 8;
+        }
+
+        .pc:hover .pc-overlay {
+            transform: translateY(0);
+        }
+
+        .pc-sizes {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+
+        .pc-sizes span {
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pc-sizes span:hover,
+        .pc-sizes span.sel {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+
+        .pc-add {
+            width: 100%;
+            padding: 11px;
+            background: var(--black);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .pc-add:hover {
+            background: var(--accent);
+        }
+
+        .pc-info {
+            padding: 14px 2px 8px;
+        }
+
+        .pc-info h3 {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--black);
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .pc-price {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pc-price .old {
+            font-size: 0.78rem;
+            color: var(--gray-mid);
+            text-decoration: line-through;
+        }
+
+        .pc-price .now {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .pc-price .regular {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .pc-installment {
+            font-size: 0.7rem;
+            color: var(--gray-mid);
+            margin-top: 2px;
+        }
+
+        /* ==========================================
+           PROMO BANNER — Coral/Warm
+           ========================================== */
+        .promo-warm {
+            background: linear-gradient(135deg, #e8604c 0%, #f4845f 50%, #e63946 100%);
+            padding: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-warm-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-warm h3 {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .promo-warm h2 {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 4px;
+            font-style: italic;
+        }
+
+        .promo-warm p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 14px;
+            font-size: 0.88rem;
+            max-width: 450px;
+        }
+
+        .promo-warm .btn {
+            background: var(--white);
+            color: var(--black);
+            padding: 10px 28px;
+            font-size: 0.7rem;
+        }
+
+        .promo-warm .btn:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* ==========================================
+           NEWSLETTER — Clean
+           ========================================== */
+        .newsletter {
+            background: var(--cream2);
+            padding: 65px 0;
+            text-align: center;
+        }
+
+        .newsletter h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .newsletter p {
+            color: var(--gray-dark);
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .nl-form {
+            display: flex;
+            max-width: 460px;
+            margin: 0 auto;
+        }
+
+        .nl-form input {
+            flex: 1;
+            padding: 13px 18px;
+            border: 1px solid var(--gray-light);
+            background: var(--white);
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            outline: none;
+            border-right: none;
+        }
+
+        .nl-form input:focus {
+            border-color: var(--accent);
+        }
+
+        .nl-form button {
+            background: var(--black);
+            color: var(--white);
+            padding: 13px 26px;
+            font-weight: 700;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nl-form button:hover {
+            background: var(--accent);
+        }
+
+        /* ==========================================
+           FOOTER — Refined
+           ========================================== */
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 70px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col .logo {
+            margin-bottom: 14px;
+        }
+
+        .footer-col>p {
+            color: var(--gray-mid);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 20px;
+            color: var(--gray-mid);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--yellow);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 22px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.75rem;
+        }
+
+        /* ==========================================
+           WHATSAPP
+           ========================================== */
+        .wa-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+            transition: all 0.3s;
+            animation: wapulse 2.5s infinite;
+        }
+
+        .wa-btn:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        @keyframes wapulse {
+
+            0%,
+            100% {
+                box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35)
+            }
+
+            50% {
+                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6)
+            }
+        }
+
+        /* ==========================================
+           SEARCH OVERLAY — KOAJ Style
+           ========================================== */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(255, 255, 255, .98);
+            backdrop-filter: blur(8px);
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .35s;
+            overflow-y: auto
+        }
+
+        .search-overlay.open {
+            opacity: 1;
+            visibility: visible
+        }
+
+        .search-overlay-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 30px
+        }
+
+        .search-top {
+            display: flex;
+            align-items: center;
+            height: 68px;
+            border-bottom: 1px solid var(--gray-light);
+            gap: 14px
+        }
+
+        .search-top .search-icon {
+            font-size: 1.1rem;
+            color: var(--gray-mid)
+        }
+
+        .search-top input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            color: var(--black);
+            outline: none
+        }
+
+        .search-top input::placeholder {
+            color: var(--gray-mid)
+        }
+
+        .search-top .search-close {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--gray-dark);
+            transition: color .3s;
+            border: none;
+            background: none
+        }
+
+        .search-top .search-close:hover {
+            color: var(--accent)
+        }
+
+        .search-body {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 50px;
+            padding: 35px 0 50px
+        }
+
+        .search-popular h4 {
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            color: var(--black)
+        }
+
+        .search-popular ul li {
+            margin-bottom: 12px
+        }
+
+        .search-popular ul li a {
+            font-size: .9rem;
+            color: var(--accent);
+            transition: color .3s
+        }
+
+        .search-popular ul li a:hover {
+            color: var(--black)
+        }
+
+        .search-results h4 {
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            color: var(--black)
+        }
+
+        .search-products {
+            display: flex;
+            gap: 18px;
+            overflow-x: auto;
+            padding-bottom: 16px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .search-products::-webkit-scrollbar {
+            height: 4px
+        }
+
+        .search-products::-webkit-scrollbar-thumb {
+            background: var(--gray-light);
+            border-radius: 10px
+        }
+
+        .sp-card {
+            min-width: 180px;
+            max-width: 180px;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform .3s
+        }
+
+        .sp-card:hover {
+            transform: translateY(-4px)
+        }
+
+        .sp-card-img {
+            position: relative;
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            background: var(--cream2);
+            margin-bottom: 10px
+        }
+
+        .sp-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s
+        }
+
+        .sp-card:hover .sp-card-img img {
+            transform: scale(1.06)
+        }
+
+        .sp-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: var(--white);
+            font-size: .65rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 3px
+        }
+
+        .sp-card h5 {
+            font-size: .8rem;
+            font-weight: 500;
+            color: var(--black);
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .sp-card .sp-prices {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .sp-card .sp-prices .sp-now {
+            font-size: .88rem;
+            font-weight: 700;
+            color: var(--black)
+        }
+
+        .sp-card .sp-prices .sp-old {
+            font-size: .78rem;
+            color: var(--gray-mid);
+            text-decoration: line-through
+        }
+
+        .search-nav {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            justify-content: flex-end
+        }
+
+        .search-nav button {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1.5px solid var(--gray-light);
+            background: transparent;
+            color: var(--gray-dark);
+            font-size: .75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .search-nav button:hover {
+            border-color: var(--black);
+            color: var(--black)
+        }
+
+        @media(max-width:768px) {
+            .search-body {
+                grid-template-columns: 1fr;
+                gap: 25px
+            }
+
+            .search-popular {
+                order: 2
+            }
+
+            .sp-card {
+                min-width: 155px;
+                max-width: 155px
+            }
+
+            .sp-card-img {
+                height: 200px
+            }
+        }
+
+        /* ==========================================
+           RESPONSIVE
+           ========================================== */
+        @media(max-width:1024px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .editorial-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .editorial-text {
+                text-align: center;
+                padding: 0;
+            }
+
+            .editorial-text h2 {
+                font-size: 2.2rem;
+            }
+
+            .cat-duo {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:600px) {
+            .header-inner {
+                height: 56px;
+                padding: 0 16px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                margin-top: 56px;
+                height: 80vh;
+            }
+
+            .slide-content {
+                bottom: 8%;
+                left: 5%;
+                right: 5%;
+            }
+
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+
+            .slide-content p {
+                font-size: 0.85rem;
+            }
+
+            .editorial {
+                padding: 50px 0;
+            }
+
+            .editorial-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .editorial-card img {
+                height: 350px;
+            }
+
+            .section-title {
+                padding: 45px 0 25px;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .pc-img-wrap img {
+                height: 260px;
+            }
+
+            .pc-overlay {
+                display: none;
+            }
+
+            .promo-warm h2 {
+                font-size: 2.2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nl-form {
+                flex-direction: column;
+            }
+
+            .nl-form input {
+                border-right: 1px solid var(--gray-light);
+                margin-bottom: 10px;
+            }
+
+            .hero-arrows {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- ========== HEADER ========== -->
+    <!-- ============ HEADER ============ -->
     <header class="header" id="header">
-        <div class="container">
-            <a href="index.html" class="logo">JK<span> Imperip</span></a>
+        <div class="header-inner">
+            <a href="index.html" class="logo"><img
+                    src="https://cdn.shopify.com/s/files/1/0999/1615/2913/files/image_Pippit_202602232041-removebg-preview.png?v=1771897354"
+                    alt="JK Imperip"></a>
 
             <ul class="nav-links">
+                <li><a href="catalogo.html">Novedades</a></li>
                 <li><a href="catalogo.html">Calzado</a></li>
-                <li><a href="catalogo.html">Zapatillas</a></li>
                 <li><a href="catalogo.html">Conjuntos</a></li>
+                <li><a href="#buzos">Buzos</a></li>
+                <li><a href="#chaquetas">Chaquetas</a></li>
                 <li><a href="catalogo.html">Deporte</a></li>
-                <li><a href="catalogo.html">Verano</a></li>
-                <li><a href="catalogo.html">Camisas</a></li>
             </ul>
 
-            <div class="nav-icons">
-                <a href="#" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
-                <a href="#" title="Carrito"><i class="fa-solid fa-bag-shopping"></i></a>
-                <div class="hamburger" id="hamburger" aria-label="Menú">
+            <div class="nav-right">
+                <a href="#" title="Buscar" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="#" title="Favoritos"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" title="Carrito" class="cart-count"><i class="fa-solid fa-bag-shopping"></i></a>
+                <button class="hamburger" id="hamburger" aria-label="Menú">
                     <span></span><span></span><span></span>
-                </div>
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- ========== MOBILE MENU ========== -->
-    <div class="mobile-menu" id="mobileMenu">
+    <!-- ============ MOBILE MENU ============ -->
+    <nav class="mobile-menu" id="mobileMenu">
         <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Novedades</a>
         <a href="catalogo.html">Calzado</a>
-        <a href="catalogo.html">Zapatillas</a>
-        <a href="catalogo.html">Conjuntos</a>
+        <a href="#buzos">Buzos</a>
+        <a href="#chaquetas">Chaquetas</a>
         <a href="catalogo.html">Deporte</a>
-        <a href="catalogo.html">Verano</a>
-        <a href="catalogo.html">Camisas</a>
         <a href="contacto.html">Contacto</a>
-    </div>
+    </nav>
 
-    <!-- ========== HERO SLIDER ========== -->
-    <section class="hero">
-        <div class="hero-slides" id="heroSlider">
-            <div class="hero-slide"
-                style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&q=80');">
-                <div class="hero-slide-content">
-                    <h2>Colección<br>Verano 2026</h2>
-                    <p>Encuentra el estilo que define tu temporada. Nuevos diseños exclusivos.</p>
-                    <a href="catalogo.html" class="btn btn-yellow">Ver Colección</a>
-                </div>
+    <!-- ============ SEARCH OVERLAY (KOAJ STYLE) ============ -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-inner">
+            <div class="search-top">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Buscar..." autocomplete="off">
+                <button class="search-close" id="searchClose" aria-label="Cerrar búsqueda"><i
+                        class="fa-solid fa-xmark"></i></button>
             </div>
-            <div class="hero-slide"
-                style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80');">
-                <div class="hero-slide-content">
-                    <h2>Urban<br>Essentials</h2>
-                    <p>Moda urbana diseñada para la ciudad. Comodidad y estilo en cada pieza.</p>
-                    <a href="catalogo.html" class="btn btn-outline">Comprar Ahora</a>
+            <div class="search-body">
+                <div class="search-popular">
+                    <h4>Búsquedas populares</h4>
+                    <ul>
+                        <li><a href="catalogo.html">tenis</a></li>
+                        <li><a href="#buzos">buzo</a></li>
+                        <li><a href="#chaquetas">chaqueta</a></li>
+                        <li><a href="catalogo.html">medias</a></li>
+                        <li><a href="catalogo.html">conjuntos</a></li>
+                        <li><a href="catalogo.html">jeans</a></li>
+                        <li><a href="catalogo.html">tenis mujer</a></li>
+                        <li><a href="catalogo.html">zapatos</a></li>
+                        <li><a href="catalogo.html">chaquetas</a></li>
+                        <li><a href="catalogo.html">jogger</a></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="hero-slide"
-                style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&q=80');">
-                <div class="hero-slide-content">
-                    <h2>Nuevos<br>Conjuntos</h2>
-                    <p>Looks completos para cada ocasión. Descubre las tendencias.</p>
-                    <a href="catalogo.html" class="btn btn-yellow">Explorar</a>
+                <div class="search-results">
+                    <h4>Productos recomendados</h4>
+                    <div class="search-products" id="searchProducts">
+                        <div class="sp-card">
+                            <div class="sp-card-img"><span class="sp-badge">50%</span><img
+                                    src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80"
+                                    alt="Pantalón"></div>
+                            <h5>Pantalón unicolor jogg...</h5>
+                            <div class="sp-prices"><span class="sp-now">$39.950</span><span
+                                    class="sp-old">$79.900</span></div>
+                        </div>
+                        <div class="sp-card">
+                            <div class="sp-card-img"><span class="sp-badge">50%</span><img
+                                    src="https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?w=400&q=80"
+                                    alt="Jean"></div>
+                            <h5>Jean open leg, tiro alto ...</h5>
+                            <div class="sp-prices"><span class="sp-now">$49.950</span><span
+                                    class="sp-old">$99.900</span></div>
+                        </div>
+                        <div class="sp-card">
+                            <div class="sp-card-img"><span class="sp-badge">50%</span><img
+                                    src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&q=80"
+                                    alt="Jean azul"></div>
+                            <h5>Jean azul oscuro open ...</h5>
+                            <div class="sp-prices"><span class="sp-now">$49.950</span><span
+                                    class="sp-old">$99.900</span></div>
+                        </div>
+                        <div class="sp-card">
+                            <div class="sp-card-img"><span class="sp-badge">25%</span><img
+                                    src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80"
+                                    alt="Buzo"></div>
+                            <h5>Buzo perchado unicolo...</h5>
+                            <div class="sp-prices"><span class="sp-now">$89.900</span><span
+                                    class="sp-old">$119.900</span></div>
+                        </div>
+                        <div class="sp-card">
+                            <div class="sp-card-img"><span class="sp-badge">50%</span><img
+                                    src="https://images.unsplash.com/photo-1539185441755-769473a23570?w=400&q=80"
+                                    alt="Tenis"></div>
+                            <h5>Tenis casuales unic...</h5>
+                            <div class="sp-prices"><span class="sp-now">$54.950</span><span
+                                    class="sp-old">$109.900</span></div>
+                        </div>
+                        <div class="sp-card">
+                            <div class="sp-card-img"><span class="sp-badge">30%</span><img
+                                    src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80"
+                                    alt="Chaqueta"></div>
+                            <h5>Chaqueta bomber premium...</h5>
+                            <div class="sp-prices"><span class="sp-now">$139.900</span><span
+                                    class="sp-old">$199.900</span></div>
+                        </div>
+                    </div>
+                    <div class="search-nav">
+                        <button id="spPrev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button id="spNext" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
+    <!-- ============ HERO SLIDER ============ -->
+    <section class="hero">
+        <div class="hero-slides" id="heroSlider">
+            <div class="hero-slide"
+                style="background-image:url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1600&q=80')">
+                <div class="slide-content">
+                    <span class="slide-tag">Nueva Colección</span>
+                    <h2>Colección<br>Verano 2026</h2>
+                    <p>Descubre los diseños que marcarán la temporada. Piezas exclusivas con envío a toda Colombia.</p>
+                    <a href="catalogo.html" class="btn btn-outline-w">Conocé las Novedades <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="hero-slide"
+                style="background-image:url('https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1600&q=80')">
+                <div class="slide-content">
+                    <span class="slide-tag">Tendencia</span>
+                    <h2>Urban<br>Essentials</h2>
+                    <p>Moda urbana diseñada para la ciudad. Comodidad y estilo en cada pieza.</p>
+                    <a href="catalogo.html" class="btn btn-dark">Comprar Ahora <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="hero-slide"
+                style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=80')">
+                <div class="slide-content">
+                    <span class="slide-tag">Destacado</span>
+                    <h2>Nuevos<br>Conjuntos</h2>
+                    <p>Looks completos para cada ocasión. La moda que te define.</p>
+                    <a href="catalogo.html" class="btn btn-outline-w">Explorar <i
+                            class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
         <div class="hero-arrows">
             <button class="hero-arrow" id="prevSlide" aria-label="Anterior"><i
                     class="fa-solid fa-chevron-left"></i></button>
             <button class="hero-arrow" id="nextSlide" aria-label="Siguiente"><i
                     class="fa-solid fa-chevron-right"></i></button>
         </div>
-
         <div class="hero-dots" id="heroDots">
-            <span class="hero-dot active"></span>
-            <span class="hero-dot"></span>
-            <span class="hero-dot"></span>
+            <button class="hero-dot active"></button>
+            <button class="hero-dot"></button>
+            <button class="hero-dot"></button>
         </div>
     </section>
 
-    <!-- ========== CATEGORIES ========== -->
-    <section class="categories">
+    <!-- ============ ANNOUNCEMENT BAR ============ -->
+    <div class="announce-bar">
+        Envío <span>gratis</span> en compras mayores a $150.000 &nbsp;·&nbsp; Pagos con Nequi, Daviplata y Tarjeta
+        &nbsp;·&nbsp; Nuevos diseños cada semana
+    </div>
+
+    <!-- ============ EDITORIAL — "Tú Eliges" ============ -->
+    <section class="editorial">
         <div class="container">
-            <div class="section-header">
-                <h2>Elige Tu Estilo</h2>
-                <p>Explora nuestras categorías más populares</p>
-            </div>
-            <div class="cat-grid">
-                <a href="catalogo.html" class="cat-card">
-                    <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3c4e?w=600&q=80" alt="Camisetas">
-                    <div class="cat-label">
-                        <span>Nueva temporada</span>
-                        <h3>Camisetas</h3>
+            <div class="editorial-grid">
+                <div class="editorial-text">
+                    <h2>Tú Eliges<br>Tu Estilo</h2>
+                    <p>Descubre las piezas que van con tu personalidad. Moda colombiana para cada momento.</p>
+                </div>
+                <div class="editorial-card">
+                    <a href="catalogo.html">
+                        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3c4e?w=700&q=80"
+                            alt="Esenciales Urbanos">
+                    </a>
+                    <div class="editorial-card-info">
+                        <h3>Esenciales Urbanos</h3>
+                        <a href="catalogo.html">Ver Colección <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
-                </a>
-                <a href="catalogo.html" class="cat-card">
-                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80" alt="Verano">
-                    <div class="cat-label">
-                        <span>Tendencia</span>
-                        <h3>Verano</h3>
+                </div>
+                <div class="editorial-card">
+                    <a href="catalogo.html">
+                        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=700&q=80"
+                            alt="Looks de Verano">
+                    </a>
+                    <div class="editorial-card-info">
+                        <h3>Looks de Verano</h3>
+                        <a href="catalogo.html">Elegí el Tuyo <i class="fa-solid fa-chevron-right"></i></a>
                     </div>
-                </a>
-                <a href="catalogo.html" class="cat-card">
-                    <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&q=80" alt="Zapatillas">
-                    <div class="cat-label">
-                        <span>Best sellers</span>
-                        <h3>Zapatillas</h3>
-                    </div>
-                </a>
-                <a href="catalogo.html" class="cat-card">
-                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600&q=80" alt="Conjuntos">
-                    <div class="cat-label">
-                        <span>Destacados</span>
-                        <h3>Conjuntos</h3>
-                    </div>
-                </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== PROMO BANNER ========== -->
-    <section class="promo-banner">
-        <div class="container">
-            <h3>Oferta Especial</h3>
-            <h2>Hasta 40% Off</h2>
-            <p>En artículos seleccionados de la nueva temporada. Por tiempo limitado.</p>
-            <a href="catalogo.html" class="btn btn-yellow">Aprovechar Oferta</a>
+    <!-- ============ NOVEDADES (Products) ============ -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Novedades del Verano</h2>
+        </div>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Verano</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80"
+                        alt="Camiseta Urban White">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Camiseta Urban White Premium</h3>
+                    <div class="pc-price"><span class="regular">$89.900</span></div>
+                    <p class="pc-installment">3x $29.966 sin interés</p>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Verano</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80"
+                        alt="Conjunto Deportivo">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span>M</span><span class="sel">L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Conjunto Deportivo Black Edition</h3>
+                    <div class="pc-price"><span class="old">$145.000</span><span class="now">$116.000</span></div>
+                    <p class="pc-installment">3x $38.666 sin interés</p>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Verano</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80"
+                        alt="Zapatillas Street">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>38</span><span>39</span><span
+                                class="sel">40</span><span>41</span><span>42</span></div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Zapatillas Street Yellow</h3>
+                    <div class="pc-price"><span class="regular">$210.000</span></div>
+                    <p class="pc-installment">3x $70.000 sin interés</p>
+                </div>
+            </div>
+            <!-- Product 4 -->
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Verano</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&q=80"
+                        alt="Hoodie Classic">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span>M</span><span>L</span><span class="sel">XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Hoodie Classic Black Original</h3>
+                    <div class="pc-price"><span class="regular">$135.000</span></div>
+                    <p class="pc-installment">3x $45.000 sin interés</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ========== FOOTER ========== -->
+    <!-- ============ PROMO BANNER ============ -->
+    <section class="promo-warm">
+        <div class="promo-warm-inner container">
+            <h3>Favoritos de la temporada</h3>
+            <h2>Verano 2026!</h2>
+            <p>Los esenciales que no pueden faltar en tu clóset. Hasta 40% de descuento.</p>
+            <a href="catalogo.html" class="btn">Ver Ofertas <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- ============ MORE PRODUCTS — "Destaques" ============ -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Destacados de Nuestra Colección</h2>
+        </div>
+        <div class="product-grid">
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Nuevo</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&q=80"
+                        alt="Chaqueta Urban">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Chaqueta Urban Night Premium</h3>
+                    <div class="pc-price"><span class="regular">$245.000</span></div>
+                    <p class="pc-installment">3x $81.666 sin interés</p>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">-30%</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80"
+                        alt="Sneakers Premium">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>38</span><span>39</span><span
+                                class="sel">40</span><span>41</span><span>42</span></div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Sneakers Premium Gold Edition</h3>
+                    <div class="pc-price"><span class="old">$280.000</span><span class="now">$196.000</span></div>
+                    <p class="pc-installment">3x $65.333 sin interés</p>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Nuevo</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&q=80" alt="Polo Sport">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span>M</span><span class="sel">L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Polo Sport Edition</h3>
+                    <div class="pc-price"><span class="regular">$95.000</span></div>
+                    <p class="pc-installment">3x $31.666 sin interés</p>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Hot</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&q=80"
+                        alt="Pantalón Cargo">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>28</span><span class="sel">30</span><span>32</span><span>34</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Pantalón Cargo Olive Street</h3>
+                    <div class="pc-price"><span class="regular">$120.000</span></div>
+                    <p class="pc-installment">3x $40.000 sin interés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ COLECCIÓN BUZOS ============ -->
+    <section class="container" id="buzos">
+        <div class="section-title">
+            <h2>Buzos & Hoodies</h2>
+        </div>
+        <div class="product-grid">
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Nuevo</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&q=80" alt="Buzo Oversize">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Buzo Oversize Street Black</h3>
+                    <div class="pc-price"><span class="regular">$125.000</span></div>
+                    <p class="pc-installment">3x $41.666 sin interés</p>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">-25%</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=500&q=80"
+                        alt="Hoodie Gris">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span>M</span><span class="sel">L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Hoodie Classic Gris Premium</h3>
+                    <div class="pc-price"><span class="old">$140.000</span><span class="now">$105.000</span></div>
+                    <p class="pc-installment">3x $35.000 sin interés</p>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Hot</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&q=80" alt="Buzo Zip">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Buzo Zip Up Urban White</h3>
+                    <div class="pc-price"><span class="regular">$135.000</span></div>
+                    <p class="pc-installment">3x $45.000 sin interés</p>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Nuevo</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&q=80"
+                        alt="Hoodie Negro">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span>M</span><span>L</span><span class="sel">XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Hoodie Original Black Edition</h3>
+                    <div class="pc-price"><span class="regular">$145.000</span></div>
+                    <p class="pc-installment">3x $48.333 sin interés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ COLECCIÓN CHAQUETAS ============ -->
+    <section class="container" id="chaquetas">
+        <div class="section-title">
+            <h2>Chaquetas & Jackets</h2>
+        </div>
+        <div class="product-grid">
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Nuevo</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&q=80"
+                        alt="Chaqueta Bomber">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Chaqueta Bomber Night Premium</h3>
+                    <div class="pc-price"><span class="regular">$245.000</span></div>
+                    <p class="pc-installment">3x $81.666 sin interés</p>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">-30%</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=500&q=80"
+                        alt="Chaqueta Denim">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span>M</span><span class="sel">L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Chaqueta Denim Classic Blue</h3>
+                    <div class="pc-price"><span class="old">$210.000</span><span class="now">$147.000</span></div>
+                    <p class="pc-installment">3x $49.000 sin interés</p>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Hot</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500&q=80"
+                        alt="Chaqueta Puffer">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Puffer Jacket Black Street</h3>
+                    <div class="pc-price"><span class="regular">$280.000</span></div>
+                    <p class="pc-installment">3x $93.333 sin interés</p>
+                </div>
+            </div>
+            <div class="pc">
+                <div class="pc-img-wrap">
+                    <span class="pc-tag">Nuevo</span>
+                    <button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>
+                    <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?w=500&q=80"
+                        alt="Windbreaker">
+                    <div class="pc-overlay">
+                        <div class="pc-sizes"><span>S</span><span>M</span><span class="sel">L</span><span>XL</span>
+                        </div>
+                        <button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="pc-info">
+                    <h3>Windbreaker Sport Edition</h3>
+                    <div class="pc-price"><span class="regular">$195.000</span></div>
+                    <p class="pc-installment">3x $65.000 sin interés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="newsletter">
+        <div class="container">
+            <h3>Únete al Club JK</h3>
+            <p>Recibe ofertas exclusivas y novedades antes que nadie.</p>
+            <form class="nl-form" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte! 🎉');">
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <button type="submit">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <div class="logo">JK<span> Imperip</span></div>
+                    <a href="index.html" class="logo"><img
+                            src="https://cdn.shopify.com/s/files/1/0999/1615/2913/files/image_Pippit_202602232041-removebg-preview.png?v=1771897354"
+                            alt="JK Imperip"></a>
                     <p>Moda premium con sello colombiano. Diseñamos para quienes marcan tendencia. Envíos a todo el
                         país.</p>
                     <div class="social-icons">
@@ -162,6 +1937,8 @@
                         <li><a href="catalogo.html">Calzado</a></li>
                         <li><a href="catalogo.html">Zapatillas</a></li>
                         <li><a href="catalogo.html">Conjuntos</a></li>
+                        <li><a href="#buzos">Buzos</a></li>
+                        <li><a href="#chaquetas">Chaquetas</a></li>
                         <li><a href="catalogo.html">Deporte</a></li>
                     </ul>
                 </div>
@@ -175,12 +1952,8 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>Newsletter</h4>
-                    <p>Recibe ofertas exclusivas y novedades.</p>
-                    <div class="newsletter-box">
-                        <input type="email" placeholder="Tu correo electrónico">
-                        <button type="submit">OK</button>
-                    </div>
+                    <h4>Pagos Seguros</h4>
+                    <p>Acepta Nequi, Daviplata, PSE, Visa, Mastercard y más. Compra con total tranquilidad.</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -189,13 +1962,151 @@
         </div>
     </footer>
 
-    <!-- WhatsApp -->
-    <a href="https://wa.me/573000000000" class="whatsapp-btn" target="_blank" rel="noopener"
-        title="Escríbenos por WhatsApp" aria-label="WhatsApp">
+    <!-- ============ WHATSAPP ============ -->
+    <a href="https://wa.me/573002963698" class="wa-btn" target="_blank" rel="noopener" title="Escríbenos"
+        aria-label="WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
-    <script src="main.js"></script>
+    <!-- ============ JAVASCRIPT ============ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile menu
+            var hb = document.getElementById('hamburger');
+            var mm = document.getElementById('mobileMenu');
+            hb.addEventListener('click', function () {
+                hb.classList.toggle('active');
+                mm.classList.toggle('open');
+                document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+            });
+            var links = mm.querySelectorAll('a');
+            for (var i = 0; i < links.length; i++) {
+                links[i].addEventListener('click', function () {
+                    hb.classList.remove('active'); mm.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // Header scroll
+            var hdr = document.getElementById('header');
+            window.addEventListener('scroll', function () {
+                hdr.classList.toggle('scrolled', window.scrollY > 40);
+            });
+
+            // Hero slider
+            var slider = document.getElementById('heroSlider');
+            var slides = slider.querySelectorAll('.hero-slide');
+            var dots = document.querySelectorAll('.hero-dot');
+            var cur = 0, tot = slides.length;
+
+            function go(n) {
+                cur = ((n % tot) + tot) % tot;
+                slider.style.transform = 'translateX(-' + (cur * 100) + '%)';
+                for (var j = 0; j < dots.length; j++) dots[j].classList.toggle('active', j === cur);
+            }
+            document.getElementById('nextSlide').addEventListener('click', function () { go(cur + 1); rs(); });
+            document.getElementById('prevSlide').addEventListener('click', function () { go(cur - 1); rs(); });
+            for (var d = 0; d < dots.length; d++) {
+                (function (i) { dots[i].addEventListener('click', function () { go(i); rs(); }); })(d);
+            }
+            var tmr = setInterval(function () { go(cur + 1); }, 5500);
+            function rs() { clearInterval(tmr); tmr = setInterval(function () { go(cur + 1); }, 5500); }
+
+            // Touch
+            var sx = 0;
+            slider.addEventListener('touchstart', function (e) { sx = e.changedTouches[0].screenX; }, { passive: true });
+            slider.addEventListener('touchend', function (e) {
+                var dx = sx - e.changedTouches[0].screenX;
+                if (Math.abs(dx) > 50) { dx > 0 ? go(cur + 1) : go(cur - 1); rs(); }
+            }, { passive: true });
+
+            // Wishlist toggle
+            var hearts = document.querySelectorAll('.pc-wish');
+            for (var h = 0; h < hearts.length; h++) {
+                hearts[h].addEventListener('click', function () {
+                    this.classList.toggle('liked');
+                    var icon = this.querySelector('i');
+                    if (this.classList.contains('liked')) {
+                        icon.classList.remove('fa-regular');
+                        icon.classList.add('fa-solid');
+                    } else {
+                        icon.classList.remove('fa-solid');
+                        icon.classList.add('fa-regular');
+                    }
+                });
+            }
+
+            // Size selector
+            var sizes = document.querySelectorAll('.pc-sizes span');
+            for (var s = 0; s < sizes.length; s++) {
+                sizes[s].addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var siblings = this.parentElement.querySelectorAll('span');
+                    for (var k = 0; k < siblings.length; k++) siblings[k].classList.remove('sel');
+                    this.classList.add('sel');
+                });
+            }
+
+            // ── SEARCH OVERLAY (KOAJ STYLE) ──
+            var searchBtn = document.getElementById('searchBtn');
+            var searchOverlay = document.getElementById('searchOverlay');
+            var searchClose = document.getElementById('searchClose');
+            var searchInput = document.getElementById('searchInput');
+
+            searchBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                searchOverlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                setTimeout(function () { searchInput.focus(); }, 200);
+            });
+
+            searchClose.addEventListener('click', function () {
+                searchOverlay.classList.remove('open');
+                document.body.style.overflow = '';
+                searchInput.value = '';
+            });
+
+            // Close on ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && searchOverlay.classList.contains('open')) {
+                    searchOverlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                    searchInput.value = '';
+                }
+            });
+
+            // Close on click outside search body
+            searchOverlay.addEventListener('click', function (e) {
+                if (e.target === searchOverlay) {
+                    searchOverlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                    searchInput.value = '';
+                }
+            });
+
+            // Product carousel nav
+            var spContainer = document.getElementById('searchProducts');
+            var spPrev = document.getElementById('spPrev');
+            var spNext = document.getElementById('spNext');
+            if (spPrev && spNext && spContainer) {
+                spNext.addEventListener('click', function () {
+                    spContainer.scrollBy({ left: 200, behavior: 'smooth' });
+                });
+                spPrev.addEventListener('click', function () {
+                    spContainer.scrollBy({ left: -200, behavior: 'smooth' });
+                });
+            }
+
+            // Popular search links close overlay
+            var popLinks = document.querySelectorAll('.search-popular a');
+            for (var pl = 0; pl < popLinks.length; pl++) {
+                popLinks[pl].addEventListener('click', function () {
+                    searchOverlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

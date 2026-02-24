@@ -104,15 +104,23 @@
         }
 
         .logo {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase
+            display: flex;
+            align-items: center
         }
 
-        .logo span {
-            color: var(--accent)
+        .logo img {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            transition: opacity .3s
+        }
+
+        .logo:hover img {
+            opacity: 0.85
+        }
+
+        .footer .logo img {
+            height: 40px
         }
 
         .nav-links {
@@ -461,39 +469,78 @@
         .footer {
             background: var(--black);
             color: var(--white);
-            padding: 50px 0 20px
+            padding: 70px 0 25px
         }
 
-        .footer-inner {
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+            gap: 40px;
+            margin-bottom: 50px
+        }
+
+        .footer-col .logo {
+            margin-bottom: 14px
+        }
+
+        .footer-col>p {
+            color: var(--gray-mid);
+            font-size: .85rem;
+            line-height: 1.7
+        }
+
+        .footer-col h4 {
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 20px;
+            color: var(--gray-mid)
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, .6);
+            font-size: .85rem
+        }
+
+        .footer-col ul li a:hover {
+            color: #FFD600
+        }
+
+        .social-icons {
             display: flex;
-            justify-content: space-between;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            display: flex;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 20px
+            justify-content: center;
+            color: rgba(255, 255, 255, .6);
+            font-size: .9rem;
+            transition: all .3s
         }
 
-        .footer-links {
-            display: flex;
-            gap: 20px
+        .social-icons a:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent)
         }
 
-        .footer-links a {
-            color: rgba(255, 255, 255, .5);
-            font-size: .82rem
-        }
-
-        .footer-links a:hover {
-            color: var(--accent)
-        }
-
-        .footer-copy {
-            width: 100%;
-            text-align: center;
-            margin-top: 25px;
-            padding-top: 18px;
+        .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, .06);
-            color: rgba(255, 255, 255, .3);
-            font-size: .72rem
+            padding-top: 22px;
+            text-align: center;
+            color: rgba(255, 255, 255, .35);
+            font-size: .75rem
         }
 
         /* WhatsApp */
@@ -512,12 +559,25 @@
             justify-content: center;
             z-index: 999;
             box-shadow: 0 4px 18px rgba(37, 211, 102, .35);
-            transition: all .3s
+            transition: all .3s;
+            animation: wapulse 2.5s infinite
         }
 
         .wa-btn:hover {
             transform: scale(1.1);
             color: #fff
+        }
+
+        @keyframes wapulse {
+
+            0%,
+            100% {
+                box-shadow: 0 4px 18px rgba(37, 211, 102, .35)
+            }
+
+            50% {
+                box-shadow: 0 4px 30px rgba(37, 211, 102, .6)
+            }
         }
 
         @media(max-width:1024px) {
@@ -531,6 +591,11 @@
 
             .product-grid {
                 grid-template-columns: repeat(2, 1fr)
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px
             }
         }
 
@@ -569,6 +634,11 @@
                 padding: 7px 14px;
                 font-size: .65rem
             }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px
+            }
         }
     </style>
 </head>
@@ -577,26 +647,33 @@
 
     <header class="header" id="header">
         <div class="header-inner">
-            <a href="index.html" class="logo">JK<span> Imperip</span></a>
+            <a href="index.html" class="logo"><img
+                    src="https://cdn.shopify.com/s/files/1/0999/1615/2913/files/image_Pippit_202602232041-removebg-preview.png?v=1771897354"
+                    alt="JK Imperip"></a>
             <ul class="nav-links">
                 <li><a href="catalogo.html">Novedades</a></li>
-                <li><a href="catalogo.html">Verano</a></li>
                 <li><a href="catalogo.html">Calzado</a></li>
                 <li><a href="catalogo.html">Conjuntos</a></li>
+                <li><a href="index.html#buzos">Buzos</a></li>
+                <li><a href="index.html#chaquetas">Chaquetas</a></li>
                 <li><a href="catalogo.html">Deporte</a></li>
-                <li><a href="catalogo.html">Camisas</a></li>
             </ul>
             <div class="nav-right">
-                <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                <a href="#"><i class="fa-regular fa-heart"></i></a>
-                <a href="#"><i class="fa-solid fa-bag-shopping"></i></a>
-                <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+                <a href="#" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="#" title="Favoritos"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" title="Carrito"><i class="fa-solid fa-bag-shopping"></i></a>
+                <button class="hamburger" id="hamburger"
+                    aria-label="Menú"><span></span><span></span><span></span></button>
             </div>
         </div>
     </header>
 
     <nav class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Inicio</a><a href="catalogo.html">Catálogo</a><a href="contacto.html">Contacto</a>
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="index.html#buzos">Buzos</a>
+        <a href="index.html#chaquetas">Chaquetas</a>
+        <a href="contacto.html">Contacto</a>
     </nav>
 
     <div class="container">
@@ -611,6 +688,8 @@
                 <button class="filter-tab">Camisetas</button>
                 <button class="filter-tab">Zapatillas</button>
                 <button class="filter-tab">Conjuntos</button>
+                <button class="filter-tab">Buzos</button>
+                <button class="filter-tab">Chaquetas</button>
                 <button class="filter-tab">Deporte</button>
                 <button class="filter-tab">Calzado</button>
             </div>
@@ -619,8 +698,8 @@
 
         <div class="product-grid">
             <div class="pc">
-                <div class="pc-img-wrap"><span class="pc-tag">Verano</span><button class="pc-wish"><i
-                            class="fa-regular fa-heart"></i></button><img
+                <div class="pc-img-wrap"><span class="pc-tag">Verano</span><button class="pc-wish"
+                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
                         src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80"
                         alt="Camiseta Urban">
                     <div class="pc-overlay">
@@ -637,8 +716,8 @@
             </div>
 
             <div class="pc">
-                <div class="pc-img-wrap"><span class="pc-tag">-20%</span><button class="pc-wish"><i
-                            class="fa-regular fa-heart"></i></button><img
+                <div class="pc-img-wrap"><span class="pc-tag">-20%</span><button class="pc-wish"
+                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
                         src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80" alt="Conjunto">
                     <div class="pc-overlay">
                         <div class="pc-sizes"><span>S</span><span>M</span><span class="sel">L</span><span>XL</span>
@@ -654,8 +733,8 @@
             </div>
 
             <div class="pc">
-                <div class="pc-img-wrap"><span class="pc-tag">Verano</span><button class="pc-wish"><i
-                            class="fa-regular fa-heart"></i></button><img
+                <div class="pc-img-wrap"><span class="pc-tag">Verano</span><button class="pc-wish"
+                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
                         src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt="Zapatillas">
                     <div class="pc-overlay">
                         <div class="pc-sizes"><span>38</span><span>39</span><span
@@ -671,7 +750,7 @@
             </div>
 
             <div class="pc">
-                <div class="pc-img-wrap"><span class="pc-tag">Hot</span><button class="pc-wish"><i
+                <div class="pc-img-wrap"><span class="pc-tag">Hot</span><button class="pc-wish" aria-label="Favorito"><i
                             class="fa-regular fa-heart"></i></button><img
                         src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&q=80" alt="Cargo">
                     <div class="pc-overlay">
@@ -688,8 +767,8 @@
             </div>
 
             <div class="pc">
-                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"><i
-                            class="fa-regular fa-heart"></i></button><img
+                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"
+                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
                         src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500&q=80" alt="Hoodie">
                     <div class="pc-overlay">
                         <div class="pc-sizes"><span>S</span><span>M</span><span>L</span><span class="sel">XL</span>
@@ -705,8 +784,8 @@
             </div>
 
             <div class="pc">
-                <div class="pc-img-wrap"><span class="pc-tag">-30%</span><button class="pc-wish"><i
-                            class="fa-regular fa-heart"></i></button><img
+                <div class="pc-img-wrap"><span class="pc-tag">-30%</span><button class="pc-wish"
+                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
                         src="https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80" alt="Sneakers">
                     <div class="pc-overlay">
                         <div class="pc-sizes"><span>38</span><span>39</span><span class="sel">40</span><span>41</span>
@@ -722,8 +801,8 @@
             </div>
 
             <div class="pc">
-                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"><i
-                            class="fa-regular fa-heart"></i></button><img
+                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"
+                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
                         src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500&q=80" alt="Polo">
                     <div class="pc-overlay">
                         <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
@@ -739,8 +818,8 @@
             </div>
 
             <div class="pc">
-                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"><i
-                            class="fa-regular fa-heart"></i></button><img
+                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"
+                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
                         src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&q=80" alt="Chaqueta">
                     <div class="pc-overlay">
                         <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
@@ -757,15 +836,49 @@
         </div>
     </div>
 
+    <!-- ============ FOOTER ============ -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-inner">
-                <div class="logo">JK<span> Imperip</span></div>
-                <div class="footer-links"><a href="index.html">Inicio</a><a href="catalogo.html">Catálogo</a><a
-                        href="contacto.html">Contacto</a></div>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo"><img
+                            src="https://cdn.shopify.com/s/files/1/0999/1615/2913/files/image_Pippit_202602232041-removebg-preview.png?v=1771897354"
+                            alt="JK Imperip"></a>
+                    <p>Moda premium con sello colombiano. Diseñamos para quienes marcan tendencia. Envíos a todo el
+                        país.</p>
+                    <div class="social-icons">
+                        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Categorías</h4>
+                    <ul>
+                        <li><a href="catalogo.html">Calzado</a></li>
+                        <li><a href="catalogo.html">Zapatillas</a></li>
+                        <li><a href="catalogo.html">Conjuntos</a></li>
+                        <li><a href="index.html#buzos">Buzos</a></li>
+                        <li><a href="index.html#chaquetas">Chaquetas</a></li>
+                        <li><a href="catalogo.html">Deporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="#">Envíos y Devoluciones</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Pagos Seguros</h4>
+                    <p>Acepta Nequi, Daviplata, PSE, Visa, Mastercard y más. Compra con total tranquilidad.</p>
+                </div>
             </div>
-            <div class="footer-copy">
-                <p>&copy; 2026 JK Imperip. Medellín, Colombia.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JK Imperip. Todos los derechos reservados. Medellín, Colombia.</p>
             </div>
         </div>
     </footer>
