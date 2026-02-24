@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envíos y Devoluciones | JK Imperip</title>
+    <meta name="description"
+        content="Política de envíos contraentrega a todo Colombia y devoluciones. JK Imperip – Moda urbana colombiana certificada.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all .3s
+        }
+
+        ul {
+            list-style: none
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            background: none;
+            outline: none
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --black2: #111111;
+            --black3: #1a1a1a;
+            --black4: #222222;
+            --white: #ffffff;
+            --cream: #faf8f5;
+            --accent: #e63946;
+            --accent-hover: #ff4757;
+            --gray1: #333333;
+            --gray2: #555555;
+            --gray3: #888888;
+            --gray4: #aaaaaa;
+            --gray5: #cccccc;
+            --gold: #c9a84c;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Outfit', sans-serif
+        }
+
+        /* ─── HEADER ─── */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, .92);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            transition: all .35s
+        }
+
+        .header.scrolled {
+            background: rgba(10, 10, 10, .98);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, .4)
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+
+        .logo {
+            display: flex;
+            align-items: center
+        }
+
+        .logo img {
+            height: 72px;
+            width: auto;
+            object-fit: contain;
+            transition: opacity .3s
+        }
+
+        .logo:hover img {
+            opacity: 0.85
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.8rem
+        }
+
+        .nav-links a {
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray4);
+            position: relative;
+            padding: 4px 0;
+            transition: color .3s
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--white)
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--accent);
+            transition: width .35s
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.6rem
+        }
+
+        .nav-right a {
+            font-size: 1.05rem;
+            color: var(--gray4);
+            transition: color .3s
+        }
+
+        .nav-right a:hover {
+            color: var(--accent)
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+            cursor: pointer;
+            z-index: 2001
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 1.5px;
+            background: var(--white);
+            transition: all .3s;
+            display: block
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px)
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px)
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--black);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.8rem;
+            transition: right .45s cubic-bezier(.25, .8, .25, 1)
+        }
+
+        .mobile-menu.open {
+            right: 0
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: var(--gray4);
+            transition: color .3s
+        }
+
+        .mobile-menu a:hover {
+            color: var(--white)
+        }
+
+        /* ─── PAGE CONTENT ─── */
+        .page-hero {
+            padding: 140px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at top center, rgba(230, 57, 70, .08) 0%, transparent 60%);
+            pointer-events: none
+        }
+
+        .page-hero h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px
+        }
+
+        .page-hero h1 em {
+            font-style: italic;
+            color: var(--accent)
+        }
+
+        .page-hero p {
+            color: var(--gray4);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7
+        }
+
+        .page-hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(230, 57, 70, .12);
+            color: var(--accent);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px
+        }
+
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px 80px
+        }
+
+        /* Section blocks */
+        .info-section {
+            margin-bottom: 50px
+        }
+
+        .info-section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, .07)
+        }
+
+        .info-section-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(230, 57, 70, .1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--accent);
+            flex-shrink: 0
+        }
+
+        .info-section-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--white)
+        }
+
+        .info-section p,
+        .info-section li {
+            color: var(--gray4);
+            font-size: .92rem;
+            line-height: 1.8
+        }
+
+        .info-section p {
+            margin-bottom: 14px
+        }
+
+        .info-section ul {
+            padding-left: 0;
+            margin-bottom: 14px
+        }
+
+        .info-section ul li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 10px
+        }
+
+        .info-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent)
+        }
+
+        .info-section strong {
+            color: var(--white);
+            font-weight: 600
+        }
+
+        /* Highlight card */
+        .highlight-card {
+            background: var(--black3);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin: 20px 0
+        }
+
+        .highlight-card h4 {
+            font-size: .95rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .highlight-card h4 i {
+            color: var(--accent)
+        }
+
+        .highlight-card p {
+            color: var(--gray4);
+            font-size: .88rem;
+            line-height: 1.7;
+            margin: 0
+        }
+
+        /* Shipping table */
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden
+        }
+
+        .shipping-table thead th {
+            background: var(--black3);
+            color: var(--white);
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 16px 20px;
+            text-align: left
+        }
+
+        .shipping-table tbody td {
+            padding: 14px 20px;
+            font-size: .88rem;
+            color: var(--gray4);
+            border-bottom: 1px solid rgba(255, 255, 255, .05)
+        }
+
+        .shipping-table tbody tr:hover td {
+            background: rgba(255, 255, 255, .02)
+        }
+
+        /* Steps */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 20px 0
+        }
+
+        .step {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .85rem;
+            font-weight: 700;
+            flex-shrink: 0
+        }
+
+        .step-content h4 {
+            font-size: .92rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px
+        }
+
+        .step-content p {
+            color: var(--gray4);
+            font-size: .85rem;
+            line-height: 1.6;
+            margin: 0
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--black3);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 16px;
+            margin: 40px 0
+        }
+
+        .cta-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            margin-bottom: 12px
+        }
+
+        .cta-section p {
+            color: var(--gray4);
+            font-size: .92rem;
+            margin-bottom: 24px
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: #25D366;
+            color: var(--white);
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: all .35s
+        }
+
+        .cta-btn:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, .3);
+            color: var(--white)
+        }
+
+        .cta-btn i {
+            font-size: 1.1rem
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--black);
+            padding: 70px 0 25px;
+            border-top: 1px solid rgba(255, 255, 255, .05)
+        }
+
+        .footer-container {
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+            gap: 40px;
+            margin-bottom: 50px
+        }
+
+        .footer-col .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px
+        }
+
+        .footer-logo span {
+            color: var(--accent)
+        }
+
+        .footer-col>p {
+            color: var(--gray3);
+            font-size: .85rem;
+            line-height: 1.7
+        }
+
+        .footer-col h4 {
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 20px;
+            color: var(--gray3)
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, .6);
+            font-size: .85rem
+        }
+
+        .footer-col ul li a:hover {
+            color: #FFD600
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, .6);
+            font-size: .9rem;
+            transition: all .3s
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent)
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            padding-top: 22px;
+            text-align: center;
+            color: rgba(255, 255, 255, .35);
+            font-size: .75rem
+        }
+
+        .footer-col .logo img {
+            height: 40px
+        }
+
+        /* WhatsApp Float */
+        .wa-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, .4);
+            transition: all .35s
+        }
+
+        .wa-float:hover {
+            transform: scale(1.12) translateY(-3px);
+            box-shadow: 0 10px 35px rgba(37, 211, 102, .5);
+            color: #fff
+        }
+
+        .wa-float::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, .3);
+            animation: waPulse 2s infinite
+        }
+
+        @keyframes waPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0
+            }
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:1024px) {
+            .nav-links {
+                display: none
+            }
+
+            .hamburger {
+                display: flex
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px
+            }
+        }
+
+        @media(max-width:600px) {
+            .header-inner {
+                height: 58px;
+                padding: 0 18px
+            }
+
+            .page-hero {
+                padding: 110px 0 40px
+            }
+
+            .page-hero h1 {
+                font-size: 2.2rem
+            }
+
+            .content-container {
+                padding: 0 18px 60px
+            }
+
+            .shipping-table {
+                font-size: .8rem
+            }
+
+            .shipping-table thead th,
+            .shipping-table tbody td {
+                padding: 10px 12px
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr
+            }
+
+            .cta-section {
+                padding: 40px 20px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ─── HEADER ─── -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo"><img
+                    src="https://cdn.shopify.com/s/files/1/0999/1615/2913/files/image_Pippit_202602232041-removebg-preview.png?v=1771897354"
+                    alt="JK Imperip"></a>
+            <nav class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <div class="nav-right">
+                <a href="https://wa.me/573002963698" target="_blank" rel="noopener" title="WhatsApp"><i
+                        class="fa-brands fa-whatsapp"></i></a>
+                <button class="hamburger" id="hamburger"
+                    aria-label="Menú"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <section class="page-hero">
+        <div class="badge"><i class="fa-solid fa-truck-fast"></i> Envíos a todo Colombia</div>
+        <h1>Envíos y <em>Devoluciones</em></h1>
+        <p>Toda la información que necesitas sobre cómo recibir y devolver tus productos. Empresa registrada en la
+            Cámara de Comercio de Colombia.</p>
+    </section>
+
+    <!-- ─── CONTENT ─── -->
+    <div class="content-container">
+
+        <!-- COBERTURA -->
+        <div class="info-section">
+            <div class="info-section-header">
+                <div class="info-section-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <h2>Cobertura de Envíos</h2>
+            </div>
+            <p>Realizamos envíos a <strong>todo el territorio colombiano</strong>, incluyendo ciudades principales,
+                intermedias y municipios con cobertura de nuestras transportadoras aliadas.</p>
+            <p>Trabajamos con las principales empresas de logística del país: <strong>Servientrega, Interrapidísimo,
+                    Coordinadora</strong> y <strong>Envía</strong>, garantizando que tu pedido llegue de forma segura a
+                tu destino.</p>
+        </div>
+
+        <!-- MODALIDAD -->
+        <div class="info-section">
+            <div class="info-section-header">
+                <div class="info-section-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                <h2>Pago Contraentrega</h2>
+            </div>
+            <p>En JK Imperip trabajamos con la modalidad de <strong>pago contraentrega</strong>. Esto significa que solo
+                pagas cuando recibes tu pedido en la puerta de tu casa. No necesitas tarjeta de crédito ni hacer
+                transferencias anticipadas.</p>
+
+            <div class="highlight-card">
+                <h4><i class="fa-solid fa-shield-halved"></i> Compra 100% Segura</h4>
+                <p>Al ser pago contraentrega, tienes la tranquilidad de verificar tu producto antes de pagar. Solo pagas
+                    si estás satisfecho con lo que recibiste. Somos una empresa legalmente constituida y registrada en
+                    la <strong>Cámara de Comercio de Colombia</strong>.</p>
+            </div>
+        </div>
+
+        <!-- TIEMPOS -->
+        <div class="info-section">
+            <div class="info-section-header">
+                <div class="info-section-icon"><i class="fa-regular fa-clock"></i></div>
+                <h2>Tiempos de Entrega</h2>
+            </div>
+            <p>Los tiempos de entrega varían según la ubicación del destinatario:</p>
+            <table class="shipping-table">
+                <thead>
+                    <tr>
+                        <th>Destino</th>
+                        <th>Tiempo Estimado</th>
+                        <th>Costo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Medellín y Área Metropolitana</td>
+                        <td>1 – 2 días hábiles</td>
+                        <td>$8.000 – $12.000</td>
+                    </tr>
+                    <tr>
+                        <td>Ciudades principales (Bogotá, Cali, Barranquilla, Bucaramanga)</td>
+                        <td>2 – 4 días hábiles</td>
+                        <td>$10.000 – $15.000</td>
+                    </tr>
+                    <tr>
+                        <td>Ciudades intermedias</td>
+                        <td>3 – 5 días hábiles</td>
+                        <td>$12.000 – $18.000</td>
+                    </tr>
+                    <tr>
+                        <td>Municipios y zonas de difícil acceso</td>
+                        <td>5 – 8 días hábiles</td>
+                        <td>$15.000 – $25.000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>Nota:</strong> Los tiempos de entrega son estimados y pueden variar por factores logísticos,
+                climáticos o de fuerza mayor. El costo del envío se confirma al momento de realizar el pedido por
+                WhatsApp.</p>
+        </div>
+
+        <!-- PROCESO DE ENVIO -->
+        <div class="info-section">
+            <div class="info-section-header">
+                <div class="info-section-icon"><i class="fa-solid fa-box"></i></div>
+                <h2>Proceso de Envío</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h4>Realiza tu pedido</h4>
+                        <p>Elige tus productos, selecciona talla y color, y comunícate con nosotros por WhatsApp para
+                            confirmar tu orden.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h4>Confirmación y despacho</h4>
+                        <p>Confirmamos la disponibilidad, el costo total (producto + envío) y procedemos al despacho en
+                            un plazo de 1 a 2 días hábiles.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h4>Número de guía</h4>
+                        <p>Te enviamos el número de guía de la transportadora para que puedas rastrear tu pedido en
+                            tiempo real.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h4>Recibe y paga</h4>
+                        <p>Recibes tu paquete en la puerta de tu casa y pagas al transportador el valor total del pedido
+                            (producto + envío).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- POLITICA DE DEVOLUCIONES -->
+        <div class="info-section">
+            <div class="info-section-header">
+                <div class="info-section-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                <h2>Política de Devoluciones</h2>
+            </div>
+            <p>En JK Imperip respetamos y cumplimos con la <strong>Ley 1480 de 2011 (Estatuto del Consumidor)</strong> y
+                sus actualizaciones, incluyendo la <strong>Ley 2439 de 2024</strong>. Tienes derecho a solicitar una
+                devolución en los siguientes casos:</p>
+
+            <div class="highlight-card">
+                <h4><i class="fa-solid fa-gavel"></i> Derecho de Retracto (Art. 47, Ley 1480)</h4>
+                <p>Tienes <strong>5 días hábiles</strong> después de recibir el producto para ejercer tu derecho de
+                    retracto si la compra fue realizada por medios no presenciales (internet, WhatsApp, redes sociales).
+                    El producto debe devolverse en las mismas condiciones en que fue recibido, con etiquetas originales
+                    y sin señales de uso.</p>
+            </div>
+
+            <p><strong>Causas válidas para devolución:</strong></p>
+            <ul>
+                <li>El producto llegó con <strong>defectos de fabricación</strong> o daños visibles.</li>
+                <li>Recibiste un <strong>producto diferente</strong> al que ordenaste (talla, color o referencia
+                    incorrecta).</li>
+                <li>El producto no cumple con las <strong>características ofrecidas</strong> en la descripción.</li>
+                <li>Ejercicio del <strong>derecho de retracto</strong> dentro de los 5 días hábiles establecidos por
+                    ley.</li>
+            </ul>
+
+            <p><strong>Excepciones (no aplica devolución):</strong></p>
+            <ul>
+                <li>Productos que hayan sido <strong>usados, lavados o alterados</strong>.</li>
+                <li>Prendas con <strong>daños causados por el cliente</strong> (manchas, roturas, etc.).</li>
+                <li>Productos <strong>personalizados</strong> o hechos a medida.</li>
+                <li>Ropa interior, trajes de baño y prendas de uso íntimo por razones de higiene.</li>
+            </ul>
+        </div>
+
+        <!-- PROCESO DE DEVOLUCION -->
+        <div class="info-section">
+            <div class="info-section-header">
+                <div class="info-section-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                <h2>Proceso de Devolución</h2>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-content">
+                        <h4>Notifica tu caso</h4>
+                        <p>Escríbenos por WhatsApp o al correo <strong>kjflorescolombia@gmail.com</strong> dentro de los
+                            5 días hábiles posteriores a la recepción. Incluye fotos del producto y tu número de pedido.
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-content">
+                        <h4>Evaluación</h4>
+                        <p>Nuestro equipo evaluará tu solicitud en un plazo máximo de 2 días hábiles y te indicará los
+                            pasos a seguir.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-content">
+                        <h4>Envío de devolución</h4>
+                        <p>Deberás enviar el producto a nuestra dirección en Medellín. El costo de envío de la
+                            devolución corre por cuenta del comprador, según lo dispuesto en el Art. 47 de la Ley 1480.
+                        </p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-content">
+                        <h4>Reembolso o cambio</h4>
+                        <p>Una vez recibido y verificado el producto, procederemos con el reembolso (en un plazo máximo
+                            de <strong>15 días calendario</strong> según Ley 2439/2024) o el envío de un producto de
+                            cambio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GARANTIA -->
+        <div class="info-section">
+            <div class="info-section-header">
+                <div class="info-section-icon"><i class="fa-solid fa-certificate"></i></div>
+                <h2>Garantía</h2>
+            </div>
+            <p>Todos nuestros productos cuentan con <strong>garantía legal de 1 año</strong> por defectos de
+                fabricación, conforme al Artículo 8 de la Ley 1480 de 2011. Esta garantía cubre:</p>
+            <ul>
+                <li>Costuras defectuosas que se deshagan con el uso normal.</li>
+                <li>Desprendimiento de suelas o partes del calzado.</li>
+                <li>Decoloración anormal del material sin uso excesivo.</li>
+                <li>Defectos en cremalleras, botones o accesorios de la prenda.</li>
+            </ul>
+            <p><strong>La garantía no cubre:</strong> Desgaste normal por uso, daños por uso indebido, exposición a
+                químicos, modificaciones del producto o daños causados por lavado incorrecto.</p>
+            <p>Para hacer válida la garantía, contacta a nuestro equipo a <strong>kjflorescolombia@gmail.com</strong> o
+                por WhatsApp al <strong>+57 300 296 3698</strong>.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h3>¿Tienes dudas sobre tu pedido?</h3>
+            <p>Estamos aquí para ayudarte. Contáctanos por WhatsApp y resolveremos tus preguntas al instante.</p>
+            <a href="https://wa.me/573002963698?text=Hola%20JK%20Imperip%2C%20tengo%20una%20consulta%20sobre%20env%C3%ADos"
+                class="cta-btn" target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp"></i> Escribir por WhatsApp
+            </a>
+        </div>
+
+    </div>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo"><img
+                            src="https://cdn.shopify.com/s/files/1/0999/1615/2913/files/image_Pippit_202602232041-removebg-preview.png?v=1771897354"
+                            alt="JK Imperip"></a>
+                    <p>Moda premium con sello colombiano. Diseñamos para quienes marcan tendencia. Envíos a todo el
+                        país.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Categorías</h4>
+                    <ul>
+                        <li><a href="catalogo.html">Calzado</a></li>
+                        <li><a href="catalogo.html">Zapatillas</a></li>
+                        <li><a href="catalogo.html">Conjuntos</a></li>
+                        <li><a href="index.html#buzos">Buzos</a></li>
+                        <li><a href="index.html#chaquetas">Chaquetas</a></li>
+                        <li><a href="catalogo.html">Deporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="envios.html">Envíos y Devoluciones</a></li>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                        <li><a href="terminos.html">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Pagos Seguros</h4>
+                    <p>Acepta Nequi, Daviplata, PSE, Visa, Mastercard y más. Compra con total tranquilidad.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JK Imperip. Todos los derechos reservados. Medellín, Colombia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/573002963698" class="wa-float" target="_blank" rel="noopener" title="Chatea con nosotros">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var hb = document.getElementById('hamburger');
+            var mm = document.getElementById('mobileMenu');
+            hb.addEventListener('click', function () {
+                hb.classList.toggle('active');
+                mm.classList.toggle('open');
+                document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+            });
+            window.addEventListener('scroll', function () {
+                document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+            });
+        });
+    </script>
+</body>
+
+</html>

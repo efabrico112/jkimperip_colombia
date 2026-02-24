@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos y Condiciones | JK Imperip</title>
+    <meta name="description"
+        content="Términos y condiciones de uso, compra y servicio de JK Imperip. Empresa certificada en Cámara de Comercio de Colombia.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all .3s
+        }
+
+        ul {
+            list-style: none
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            border: none;
+            background: none;
+            outline: none
+        }
+
+        :root {
+            --black: #0a0a0a;
+            --black2: #111111;
+            --black3: #1a1a1a;
+            --black4: #222222;
+            --white: #ffffff;
+            --cream: #faf8f5;
+            --accent: #e63946;
+            --accent-hover: #ff4757;
+            --gray1: #333333;
+            --gray2: #555555;
+            --gray3: #888888;
+            --gray4: #aaaaaa;
+            --gray5: #cccccc;
+            --gold: #c9a84c;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Outfit', sans-serif
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, .92);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+            transition: all .35s
+        }
+
+        .header.scrolled {
+            background: rgba(10, 10, 10, .98);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, .4)
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+
+        .logo {
+            display: flex;
+            align-items: center
+        }
+
+        .logo img {
+            height: 72px;
+            width: auto;
+            object-fit: contain;
+            transition: opacity .3s
+        }
+
+        .logo:hover img {
+            opacity: 0.85
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.8rem
+        }
+
+        .nav-links a {
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray4);
+            position: relative;
+            padding: 4px 0;
+            transition: color .3s
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--white)
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--accent);
+            transition: width .35s
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.6rem
+        }
+
+        .nav-right a {
+            font-size: 1.05rem;
+            color: var(--gray4);
+            transition: color .3s
+        }
+
+        .nav-right a:hover {
+            color: var(--accent)
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px;
+            cursor: pointer;
+            z-index: 2001
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 1.5px;
+            background: var(--white);
+            transition: all .3s;
+            display: block
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px)
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px)
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--black);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.8rem;
+            transition: right .45s cubic-bezier(.25, .8, .25, 1)
+        }
+
+        .mobile-menu.open {
+            right: 0
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: var(--gray4);
+            transition: color .3s
+        }
+
+        .mobile-menu a:hover {
+            color: var(--white)
+        }
+
+        /* HERO */
+        .page-hero {
+            padding: 140px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at top center, rgba(230, 57, 70, .08) 0%, transparent 60%);
+            pointer-events: none
+        }
+
+        .page-hero h1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px
+        }
+
+        .page-hero h1 em {
+            font-style: italic;
+            color: var(--accent)
+        }
+
+        .page-hero p {
+            color: var(--gray4);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7
+        }
+
+        .page-hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(230, 57, 70, .12);
+            color: var(--accent);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px
+        }
+
+        .page-hero .last-updated {
+            color: var(--gray3);
+            font-size: .82rem;
+            margin-top: 12px
+        }
+
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px 80px
+        }
+
+        /* TOC */
+        .toc {
+            background: var(--black3);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 50px
+        }
+
+        .toc h3 {
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gray3);
+            margin-bottom: 16px
+        }
+
+        .toc ol {
+            padding-left: 20px;
+            counter-reset: toc
+        }
+
+        .toc ol li {
+            counter-increment: toc;
+            margin-bottom: 8px
+        }
+
+        .toc ol li a {
+            color: var(--gray4);
+            font-size: .88rem;
+            transition: color .3s
+        }
+
+        .toc ol li a:hover {
+            color: var(--accent)
+        }
+
+        /* Legal sections */
+        .legal-section {
+            margin-bottom: 45px;
+            scroll-margin-top: 100px
+        }
+
+        .legal-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, .07);
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .legal-section h2 .section-num {
+            background: var(--accent);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-body);
+            font-size: .8rem;
+            font-weight: 700;
+            flex-shrink: 0
+        }
+
+        .legal-section p {
+            color: var(--gray4);
+            font-size: .9rem;
+            line-height: 1.85;
+            margin-bottom: 14px
+        }
+
+        .legal-section strong {
+            color: var(--white);
+            font-weight: 600
+        }
+
+        .legal-section a {
+            color: var(--accent);
+            font-weight: 500
+        }
+
+        .legal-section a:hover {
+            text-decoration: underline
+        }
+
+        .legal-section ul {
+            padding-left: 0;
+            margin-bottom: 14px
+        }
+
+        .legal-section ul li {
+            color: var(--gray4);
+            font-size: .9rem;
+            line-height: 1.8;
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 8px
+        }
+
+        .legal-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent)
+        }
+
+        .legal-highlight {
+            background: rgba(230, 57, 70, .06);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0
+        }
+
+        .legal-highlight p {
+            margin: 0;
+            font-size: .88rem
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--black3);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 16px;
+            margin: 40px 0
+        }
+
+        .cta-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            margin-bottom: 12px
+        }
+
+        .cta-section p {
+            color: var(--gray4);
+            font-size: .92rem;
+            margin-bottom: 24px
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            background: var(--accent);
+            color: var(--white);
+            font-size: .82rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: all .35s
+        }
+
+        .cta-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(230, 57, 70, .3);
+            color: var(--white)
+        }
+
+        .cta-btn i {
+            font-size: 1rem
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--black);
+            padding: 70px 0 25px;
+            border-top: 1px solid rgba(255, 255, 255, .05)
+        }
+
+        .footer-container {
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 40px
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
+            gap: 40px;
+            margin-bottom: 50px
+        }
+
+        .footer-col .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px
+        }
+
+        .footer-logo span {
+            color: var(--accent)
+        }
+
+        .footer-col>p {
+            color: var(--gray3);
+            font-size: .85rem;
+            line-height: 1.7
+        }
+
+        .footer-col h4 {
+            font-size: .72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 20px;
+            color: var(--gray3)
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, .6);
+            font-size: .85rem
+        }
+
+        .footer-col ul li a:hover {
+            color: #FFD600
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .footer-social a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, .6);
+            font-size: .9rem;
+            transition: all .3s
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent)
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, .06);
+            padding-top: 22px;
+            text-align: center;
+            color: rgba(255, 255, 255, .35);
+            font-size: .75rem
+        }
+
+        .footer-col .logo img {
+            height: 40px
+        }
+
+        .wa-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            font-size: 1.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, .4);
+            transition: all .35s
+        }
+
+        .wa-float:hover {
+            transform: scale(1.12) translateY(-3px);
+            box-shadow: 0 10px 35px rgba(37, 211, 102, .5);
+            color: #fff
+        }
+
+        .wa-float::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37, 211, 102, .3);
+            animation: waPulse 2s infinite
+        }
+
+        @keyframes waPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0
+            }
+        }
+
+        @media(max-width:1024px) {
+            .nav-links {
+                display: none
+            }
+
+            .hamburger {
+                display: flex
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px
+            }
+        }
+
+        @media(max-width:600px) {
+            .header-inner {
+                height: 58px;
+                padding: 0 18px
+            }
+
+            .page-hero {
+                padding: 110px 0 40px
+            }
+
+            .page-hero h1 {
+                font-size: 2.2rem
+            }
+
+            .content-container {
+                padding: 0 18px 60px
+            }
+
+            .toc {
+                padding: 20px
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr
+            }
+
+            .cta-section {
+                padding: 40px 20px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo"><img
+                    src="https://cdn.shopify.com/s/files/1/0999/1615/2913/files/image_Pippit_202602232041-removebg-preview.png?v=1771897354"
+                    alt="JK Imperip"></a>
+            <nav class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="catalogo.html">Catálogo</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+            <div class="nav-right">
+                <a href="https://wa.me/573002963698" target="_blank" rel="noopener" title="WhatsApp"><i
+                        class="fa-brands fa-whatsapp"></i></a>
+                <button class="hamburger" id="hamburger"
+                    aria-label="Menú"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="badge"><i class="fa-solid fa-file-contract"></i> Documento Legal</div>
+        <h1>Términos y <em>Condiciones</em></h1>
+        <p>Al utilizar nuestro sitio web y realizar compras, aceptas los siguientes términos y condiciones de uso.</p>
+        <p class="last-updated">Última actualización: 23 de febrero de 2026</p>
+    </section>
+
+    <!-- CONTENT -->
+    <div class="content-container">
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>Índice de Contenido</h3>
+            <ol>
+                <li><a href="#s1">Información de la Empresa</a></li>
+                <li><a href="#s2">Aceptación de los Términos</a></li>
+                <li><a href="#s3">Productos y Disponibilidad</a></li>
+                <li><a href="#s4">Precios y Formas de Pago</a></li>
+                <li><a href="#s5">Proceso de Compra</a></li>
+                <li><a href="#s6">Envíos y Entregas</a></li>
+                <li><a href="#s7">Derecho de Retracto y Devoluciones</a></li>
+                <li><a href="#s8">Garantía Legal</a></li>
+                <li><a href="#s9">Protección de Datos Personales</a></li>
+                <li><a href="#s10">Propiedad Intelectual</a></li>
+                <li><a href="#s11">Limitación de Responsabilidad</a></li>
+                <li><a href="#s12">Legislación Aplicable y Jurisdicción</a></li>
+                <li><a href="#s13">Modificaciones</a></li>
+                <li><a href="#s14">Contacto</a></li>
+            </ol>
+        </div>
+
+        <!-- 1 -->
+        <div class="legal-section" id="s1">
+            <h2><span class="section-num">1</span> Información de la Empresa</h2>
+            <p><strong>JK Imperip</strong> es una marca de moda urbana legalmente constituida y registrada en la
+                <strong>Cámara de Comercio de Colombia</strong>. Operamos desde la ciudad de Medellín, Antioquia, y nos
+                dedicamos a la comercialización de prendas de vestir, calzado y accesorios de moda a través de canales
+                digitales.</p>
+            <ul>
+                <li><strong>Razón social:</strong> JK Imperip</li>
+                <li><strong>Ubicación:</strong> Medellín, Antioquia, Colombia</li>
+                <li><strong>Correo electrónico:</strong> <a
+                        href="mailto:kjflorescolombia@gmail.com">kjflorescolombia@gmail.com</a></li>
+                <li><strong>WhatsApp:</strong> <a href="https://wa.me/573002963698">+57 300 296 3698</a></li>
+                <li><strong>Registro:</strong> Cámara de Comercio de Colombia</li>
+            </ul>
+        </div>
+
+        <!-- 2 -->
+        <div class="legal-section" id="s2">
+            <h2><span class="section-num">2</span> Aceptación de los Términos</h2>
+            <p>Al acceder, navegar o realizar compras en el sitio web de JK Imperip (en adelante, "el Sitio"), el
+                usuario (en adelante, "el Cliente") acepta de forma expresa y voluntaria los presentes Términos y
+                Condiciones. Si no está de acuerdo con alguno de estos términos, le solicitamos abstenerse de utilizar
+                el Sitio.</p>
+            <p>Estos términos se rigen por la legislación colombiana vigente, en particular por la <strong>Ley 1480 de
+                    2011</strong> (Estatuto del Consumidor), la <strong>Ley 1581 de 2012</strong> (Protección de Datos
+                Personales), la <strong>Ley 527 de 1999</strong> (Comercio Electrónico), el <strong>Decreto 1074 de
+                    2015</strong> y la <strong>Ley 2439 de 2024</strong>.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="legal-section" id="s3">
+            <h2><span class="section-num">3</span> Productos y Disponibilidad</h2>
+            <p>Los productos ofrecidos en el Sitio están sujetos a disponibilidad. JK Imperip se reserva el derecho de
+                modificar, actualizar o descontinuar productos en cualquier momento sin previo aviso.</p>
+            <p>Nos esforzamos por presentar descripciones precisas, fotografías representativas e información detallada
+                de cada producto. Sin embargo, pueden existir variaciones mínimas en los colores debido a la
+                configuración de pantalla del dispositivo del Cliente.</p>
+            <p>En caso de que un producto no esté disponible después de haberse confirmado un pedido, JK Imperip
+                notificará al Cliente a la mayor brevedad ofreciendo alternativas equivalentes o la cancelación sin
+                costo del pedido.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="legal-section" id="s4">
+            <h2><span class="section-num">4</span> Precios y Formas de Pago</h2>
+            <p>Todos los precios publicados en el Sitio están expresados en <strong>Pesos Colombianos (COP)</strong> e
+                incluyen el Impuesto sobre las Ventas (IVA) cuando corresponda.</p>
+            <p>JK Imperip se reserva el derecho de modificar los precios en cualquier momento. Los precios aplicables
+                serán los vigentes al momento de la confirmación del pedido por parte del Cliente.</p>
+            <p><strong>Formas de pago aceptadas:</strong></p>
+            <ul>
+                <li><strong>Pago contraentrega:</strong> El Cliente paga en efectivo al momento de recibir el producto.
+                    Este es nuestro método principal de pago.</li>
+                <li><strong>Nequi:</strong> Transferencia electrónica directa.</li>
+                <li><strong>Daviplata:</strong> Transferencia electrónica directa.</li>
+                <li><strong>Transferencia bancaria:</strong> A las cuentas empresariales de JK Imperip.</li>
+            </ul>
+            <p>Los detalles de pago se coordinan directamente con el Cliente por WhatsApp al momento de confirmar el
+                pedido.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="legal-section" id="s5">
+            <h2><span class="section-num">5</span> Proceso de Compra</h2>
+            <p>El proceso de compra en JK Imperip se realiza a través de los siguientes pasos:</p>
+            <ul>
+                <li>El Cliente selecciona los productos deseados en el Sitio, incluyendo talla, color y cantidad.</li>
+                <li>El Cliente contacta a JK Imperip por WhatsApp (directamente o a través del botón de pedido del
+                    Sitio) para confirmar la disponibilidad y los detalles del pedido.</li>
+                <li>JK Imperip confirma los datos del pedido, el costo total (productos + envío) y la dirección de
+                    entrega.</li>
+                <li>Una vez confirmado el pedido, JK Imperip procede al despacho y proporciona al Cliente el número de
+                    guía de la transportadora.</li>
+                <li>El Cliente recibe el producto y realiza el pago según la modalidad acordada.</li>
+            </ul>
+            <p>La confirmación del pedido por parte del Cliente constituye la aceptación de estos Términos y
+                Condiciones.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="legal-section" id="s6">
+            <h2><span class="section-num">6</span> Envíos y Entregas</h2>
+            <p>JK Imperip realiza envíos exclusivamente dentro del <strong>territorio colombiano</strong>. No realizamos
+                envíos internacionales.</p>
+            <p>Los envíos se gestionan a través de empresas de transporte aliadas como Servientrega, Interrapidísimo,
+                Coordinadora y Envía. Los tiempos de entrega estimados son:</p>
+            <ul>
+                <li><strong>Medellín y Área Metropolitana:</strong> 1 – 2 días hábiles</li>
+                <li><strong>Ciudades principales:</strong> 2 – 4 días hábiles</li>
+                <li><strong>Ciudades intermedias:</strong> 3 – 5 días hábiles</li>
+                <li><strong>Municipios y zonas de difícil acceso:</strong> 5 – 8 días hábiles</li>
+            </ul>
+            <p>Los tiempos de entrega son estimados y pueden variar por factores logísticos, climáticos, de orden
+                público o fuerza mayor. Conforme al Artículo 36 de la Ley 1480 de 2011, si no se acuerda un plazo
+                específico, el producto deberá ser entregado en un máximo de <strong>30 días calendario</strong>.</p>
+            <p>El costo del envío varía según la ciudad de destino y el peso del paquete. Este costo se informa al
+                Cliente antes de confirmar el pedido.</p>
+            <p>Para más información, consulta nuestra <a href="envios.html">Política de Envíos y Devoluciones</a>.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="legal-section" id="s7">
+            <h2><span class="section-num">7</span> Derecho de Retracto y Devoluciones</h2>
+
+            <div class="legal-highlight">
+                <p><strong>Derecho de Retracto (Art. 47, Ley 1480 de 2011):</strong> El Cliente dispone de <strong>cinco
+                        (5) días hábiles</strong> contados a partir de la entrega del producto para ejercer su derecho
+                    de retracto en compras realizadas por medios no presenciales.</p>
+            </div>
+
+            <p><strong>Condiciones para ejercer el retracto:</strong></p>
+            <ul>
+                <li>El producto debe devolverse en las mismas condiciones en que fue recibido.</li>
+                <li>Debe conservar las etiquetas originales y el empaque.</li>
+                <li>No debe presentar señales de uso, lavado o alteración.</li>
+                <li>El costo del envío de devolución corre por cuenta del Cliente.</li>
+            </ul>
+
+            <p><strong>Excepciones al derecho de retracto:</strong></p>
+            <ul>
+                <li>Productos perecederos o que se hayan deteriorado por su naturaleza.</li>
+                <li>Productos personalizados o hechos a medida.</li>
+                <li>Ropa interior, trajes de baño y artículos de higiene personal (por razones sanitarias).</li>
+                <li>Productos que hayan sido usados, lavados o alterados por el Cliente.</li>
+            </ul>
+
+            <p><strong>Devoluciones por producto defectuoso o error en el envío:</strong></p>
+            <p>Si el Cliente recibe un producto con defectos de fabricación, un producto diferente al solicitado o un
+                producto que no cumple con las características anunciadas, tiene derecho a solicitar el cambio del
+                producto o la devolución del dinero. En estos casos, los costos de envío corren por cuenta de JK
+                Imperip.</p>
+
+            <p><strong>Plazo de reembolso:</strong> Conforme a la Ley 2439 de 2024, el reembolso se realizará en un
+                máximo de <strong>quince (15) días calendario</strong> desde que el Cliente ejerció su derecho, a través
+                del mismo medio de pago o por transferencia bancaria según acuerdo de las partes.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="legal-section" id="s8">
+            <h2><span class="section-num">8</span> Garantía Legal</h2>
+            <p>Todos los productos comercializados por JK Imperip cuentan con la <strong>garantía legal de un (1)
+                    año</strong> por defectos de fabricación, conforme al Artículo 8 de la Ley 1480 de 2011.</p>
+            <p>La garantía cubre defectos de fabricación como: costuras defectuosas, desprendimiento de suelas,
+                decoloración anormal del material sin uso excesivo, y defectos en cremalleras, botones o accesorios de
+                la prenda.</p>
+            <p><strong>La garantía no cubre:</strong></p>
+            <ul>
+                <li>Desgaste natural por uso.</li>
+                <li>Daños causados por uso indebido, negligencia o accidentes.</li>
+                <li>Exposición a productos químicos o agentes externos.</li>
+                <li>Modificaciones o reparaciones no autorizadas.</li>
+                <li>Daños por lavado incorrecto (no seguir las instrucciones de cuidado).</li>
+            </ul>
+            <p>Para hacer efectiva la garantía, el Cliente deberá contactar a JK Imperip presentando evidencia del
+                defecto (fotos o video) y el comprobante de compra (conversación de WhatsApp o comprobante de pago).</p>
+            <p>La Superintendencia de Industria y Comercio (SIC) es la entidad ante la cual el consumidor puede acudir
+                si considera que sus derechos de garantía no han sido respetados.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="legal-section" id="s9">
+            <h2><span class="section-num">9</span> Protección de Datos Personales</h2>
+            <p>JK Imperip se compromete a proteger la privacidad de los datos personales del Cliente, de conformidad con
+                la <strong>Ley 1581 de 2012</strong> (Ley de Protección de Datos Personales) y el <strong>Decreto 1377
+                    de 2013</strong>.</p>
+            <p><strong>Datos recopilados:</strong> Nombre completo, dirección de entrega, número de teléfono/WhatsApp,
+                correo electrónico y ciutat de residencia.</p>
+            <p><strong>Finalidad del tratamiento:</strong></p>
+            <ul>
+                <li>Gestionar y entregar los pedidos realizados por el Cliente.</li>
+                <li>Enviar información sobre el estado del pedido y la guía de transporte.</li>
+                <li>Comunicar promociones, ofertas y novedades (con consentimiento del Cliente).</li>
+                <li>Dar cumplimiento a las obligaciones legales y tributarias.</li>
+            </ul>
+            <p>JK Imperip <strong>no comparte ni vende</strong> los datos personales de sus Clientes a terceros, salvo
+                cuando sea necesario para el cumplimiento de la entrega (empresa transportadora) o por requerimiento de
+                autoridad competente.</p>
+            <p>El Cliente puede ejercer en cualquier momento sus derechos de acceso, rectificación, actualización y
+                supresión de sus datos personales, contactándonos al correo <a
+                    href="mailto:kjflorescolombia@gmail.com">kjflorescolombia@gmail.com</a>.</p>
+        </div>
+
+        <!-- 10 -->
+        <div class="legal-section" id="s10">
+            <h2><span class="section-num">10</span> Propiedad Intelectual</h2>
+            <p>Todos los contenidos del Sitio, incluyendo pero no limitado a textos, imágenes, fotografías, diseños
+                gráficos, logotipos, marcas, nombres comerciales y software, son propiedad de JK Imperip o se utilizan
+                con autorización de sus titulares y están protegidos por las leyes colombianas de propiedad intelectual
+                (<strong>Decisión Andina 486 de 2000</strong> y <strong>Ley 23 de 1982</strong>).</p>
+            <p>Queda expresamente prohibida la reproducción, distribución, comunicación pública o modificación de
+                cualquier contenido del Sitio sin autorización previa y por escrito de JK Imperip.</p>
+        </div>
+
+        <!-- 11 -->
+        <div class="legal-section" id="s11">
+            <h2><span class="section-num">11</span> Limitación de Responsabilidad</h2>
+            <p>JK Imperip no será responsable por:</p>
+            <ul>
+                <li>Interrupciones o fallas en el funcionamiento del Sitio por causas técnicas, mantenimiento o fuerza
+                    mayor.</li>
+                <li>Daños o pérdidas ocasionados por retrasos en la entrega atribuibles a la empresa transportadora.
+                </li>
+                <li>El uso indebido que el Cliente haga de los productos adquiridos.</li>
+                <li>Diferencias menores en el color de los productos debido a la configuración de pantalla del
+                    dispositivo del Cliente.</li>
+            </ul>
+            <p>JK Imperip realizará sus mejores esfuerzos para garantizar la disponibilidad, seguridad y correcto
+                funcionamiento del Sitio y sus servicios.</p>
+        </div>
+
+        <!-- 12 -->
+        <div class="legal-section" id="s12">
+            <h2><span class="section-num">12</span> Legislación Aplicable y Jurisdicción</h2>
+            <p>Los presentes Términos y Condiciones se rigen e interpretan de acuerdo con las leyes de la
+                <strong>República de Colombia</strong>.</p>
+            <p>Para la resolución de cualquier controversia que surja en relación con estos términos o con la
+                compraventa de productos, las partes se someterán a la jurisdicción de los jueces y tribunales
+                competentes de la ciudad de <strong>Medellín, Antioquia</strong>, Colombia.</p>
+            <p>Igualmente, el Cliente puede acudir a la <strong>Superintendencia de Industria y Comercio (SIC)</strong>
+                como entidad encargada de la protección al consumidor, a través de su página web <a
+                    href="https://www.sic.gov.co" target="_blank" rel="noopener">www.sic.gov.co</a> o la línea de
+                atención 01 8000 910 165.</p>
+        </div>
+
+        <!-- 13 -->
+        <div class="legal-section" id="s13">
+            <h2><span class="section-num">13</span> Modificaciones</h2>
+            <p>JK Imperip se reserva el derecho de actualizar, modificar o reemplazar cualquier parte de estos Términos
+                y Condiciones en cualquier momento. Las modificaciones entran en vigencia desde su publicación en el
+                Sitio.</p>
+            <p>Es responsabilidad del Cliente revisar periódicamente estos términos. El uso continuado del Sitio después
+                de la publicación de cambios constituye la aceptación de los nuevos términos.</p>
+        </div>
+
+        <!-- 14 -->
+        <div class="legal-section" id="s14">
+            <h2><span class="section-num">14</span> Contacto</h2>
+            <p>Para cualquier consulta, queja, reclamo o solicitud relacionada con estos Términos y Condiciones, el
+                Cliente puede comunicarse con JK Imperip a través de los siguientes canales:</p>
+            <ul>
+                <li><strong>Correo electrónico:</strong> <a
+                        href="mailto:kjflorescolombia@gmail.com">kjflorescolombia@gmail.com</a></li>
+                <li><strong>WhatsApp:</strong> <a href="https://wa.me/573002963698">+57 300 296 3698</a></li>
+                <li><strong>Formulario de contacto:</strong> <a href="contacto.html">Página de Contacto</a></li>
+            </ul>
+            <p>El horario de atención al cliente es de lunes a viernes de 9:00 am a 7:00 pm y sábados de 10:00 am a 4:00
+                pm (hora colombiana, GMT-5).</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h3>¿Preguntas sobre nuestros términos?</h3>
+            <p>Si necesitas aclaración sobre cualquier punto, estamos a tu disposición.</p>
+            <a href="mailto:kjflorescolombia@gmail.com" class="cta-btn">
+                <i class="fa-solid fa-envelope"></i> Enviar Correo
+            </a>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo"><img
+                            src="https://cdn.shopify.com/s/files/1/0999/1615/2913/files/image_Pippit_202602232041-removebg-preview.png?v=1771897354"
+                            alt="JK Imperip"></a>
+                    <p>Moda premium con sello colombiano. Diseñamos para quienes marcan tendencia. Envíos a todo el
+                        país.</p>
+                    <div class="footer-social">
+                        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Categorías</h4>
+                    <ul>
+                        <li><a href="catalogo.html">Calzado</a></li>
+                        <li><a href="catalogo.html">Zapatillas</a></li>
+                        <li><a href="catalogo.html">Conjuntos</a></li>
+                        <li><a href="index.html#buzos">Buzos</a></li>
+                        <li><a href="index.html#chaquetas">Chaquetas</a></li>
+                        <li><a href="catalogo.html">Deporte</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Soporte</h4>
+                    <ul>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="envios.html">Envíos y Devoluciones</a></li>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                        <li><a href="terminos.html">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Pagos Seguros</h4>
+                    <p>Acepta Nequi, Daviplata, PSE, Visa, Mastercard y más. Compra con total tranquilidad.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JK Imperip. Todos los derechos reservados. Medellín, Colombia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/573002963698" class="wa-float" target="_blank" rel="noopener" title="Chatea con nosotros">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var hb = document.getElementById('hamburger');
+            var mm = document.getElementById('mobileMenu');
+            hb.addEventListener('click', function () {
+                hb.classList.toggle('active');
+                mm.classList.toggle('open');
+                document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+            });
+            window.addEventListener('scroll', function () {
+                document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+            });
+        });
+    </script>
+</body>
+
+</html>
