@@ -97,7 +97,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 65px;
+            height: 80px;
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 30px
@@ -109,7 +109,7 @@
         }
 
         .logo img {
-            height: 48px;
+            height: 72px;
             width: auto;
             object-fit: contain;
             transition: opacity .3s
@@ -1227,6 +1227,233 @@
                 max-height: none
             }
         }
+
+        /* ── WISHLIST BADGE ── */
+        .nav-right {
+            position: relative
+        }
+
+        #wishlistBtn {
+            position: relative
+        }
+
+        .wish-badge {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background: var(--accent);
+            color: #fff;
+            font-size: .6rem;
+            font-weight: 700;
+            min-width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            line-height: 1
+        }
+
+        .wish-badge.show {
+            display: flex
+        }
+
+        /* ── WISHLIST DRAWER ── */
+        .wl-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .45);
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .35s;
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px)
+        }
+
+        .wl-overlay.open {
+            opacity: 1;
+            visibility: visible
+        }
+
+        .wl-drawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            max-width: 92vw;
+            height: 100vh;
+            background: var(--cream);
+            z-index: 3001;
+            transition: right .4s cubic-bezier(.25, .8, .25, 1);
+            display: flex;
+            flex-direction: column;
+            box-shadow: -8px 0 40px rgba(0, 0, 0, .15)
+        }
+
+        .wl-overlay.open .wl-drawer {
+            right: 0
+        }
+
+        .wl-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--gray-light)
+        }
+
+        .wl-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--black)
+        }
+
+        .wl-header .wl-count {
+            font-size: .78rem;
+            color: var(--gray-mid);
+            font-weight: 500;
+            margin-left: 8px
+        }
+
+        .wl-close {
+            font-size: 1.2rem;
+            color: var(--gray-dark);
+            cursor: pointer;
+            transition: color .2s;
+            background: none;
+            border: none;
+            padding: 6px
+        }
+
+        .wl-close:hover {
+            color: var(--accent)
+        }
+
+        .wl-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 28px
+        }
+
+        .wl-empty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+            color: var(--gray-mid)
+        }
+
+        .wl-empty i {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            color: var(--gray-light)
+        }
+
+        .wl-empty h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--black)
+        }
+
+        .wl-empty p {
+            font-size: .85rem;
+            line-height: 1.5;
+            max-width: 260px
+        }
+
+        .wl-item {
+            display: flex;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, .06);
+            align-items: center
+        }
+
+        .wl-item-img {
+            width: 80px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--cream2)
+        }
+
+        .wl-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .wl-item-info {
+            flex: 1;
+            min-width: 0
+        }
+
+        .wl-item-info h4 {
+            font-size: .88rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--black);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
+
+        .wl-item-info .wl-item-price {
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--accent)
+        }
+
+        .wl-item-remove {
+            background: none;
+            border: none;
+            color: var(--gray-mid);
+            font-size: .9rem;
+            cursor: pointer;
+            padding: 8px;
+            transition: color .2s;
+            flex-shrink: 0
+        }
+
+        .wl-item-remove:hover {
+            color: var(--accent)
+        }
+
+        .wl-footer {
+            padding: 20px 28px;
+            border-top: 1px solid var(--gray-light)
+        }
+
+        .wl-footer a {
+            display: block;
+            text-align: center;
+            background: var(--black);
+            color: #fff;
+            padding: 14px;
+            font-size: .82rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: background .3s
+        }
+
+        .wl-footer a:hover {
+            background: #333
+        }
+
+        @media(max-width:480px) {
+            .wl-drawer {
+                width: 100%;
+                max-width: 100%;
+                right: -100%
+            }
+        }
     </style>
 </head>
 
@@ -1247,7 +1474,8 @@
             </ul>
             <div class="nav-right">
                 <a href="#" title="Buscar"><i class="fa-solid fa-magnifying-glass"></i></a>
-                <a href="#" title="Favoritos"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" title="Favoritos" id="wishlistBtn"><i class="fa-regular fa-heart"></i><span
+                        class="wish-badge" id="wishBadge"></span></a>
                 <a href="#" title="Carrito"><i class="fa-solid fa-bag-shopping"></i></a>
                 <button class="hamburger" id="hamburger"
                     aria-label="Menú"><span></span><span></span><span></span></button>
@@ -1586,6 +1814,168 @@
             pdmSizes.addEventListener('click', function () { var activeSz = pdmSizes.querySelector('.pdm-size.active'); var selectedSize = activeSz ? activeSz.textContent : ''; var name = pdmTitle.textContent; pdmWaBtn.href = 'https://wa.me/573002963698?text=' + encodeURIComponent('Hola JK Imperip, me interesa: ' + name + (selectedSize ? ' (Talla ' + selectedSize + ')' : '') + '. ¿Está disponible?') });
             var swatches = document.querySelectorAll('.pdm-swatch'); for (var sw = 0; sw < swatches.length; sw++) { swatches[sw].addEventListener('click', function () { var all = document.querySelectorAll('.pdm-swatch'); for (var a = 0; a < all.length; a++)all[a].classList.remove('active'); this.classList.add('active'); document.getElementById('pdmColorName').textContent = this.getAttribute('data-color') }) }
         });
+    </script>
+
+    <!-- ============ WISHLIST DRAWER ============ -->
+    <div class="wl-overlay" id="wlOverlay">
+        <div class="wl-drawer">
+            <div class="wl-header">
+                <h3>Mis Favoritos <span class="wl-count" id="wlCount"></span></h3>
+                <button class="wl-close" id="wlClose" aria-label="Cerrar favoritos"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="wl-body" id="wlBody"></div>
+            <div class="wl-footer">
+                <a href="catalogo.html">Seguir Comprando <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var STORAGE_KEY = 'jk_wishlist';
+            function getWishlist() {
+                try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { return []; }
+            }
+            function saveWishlist(list) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+            }
+            function addToWishlist(item) {
+                var list = getWishlist();
+                for (var i = 0; i < list.length; i++) { if (list[i].name === item.name) return; }
+                list.push(item);
+                saveWishlist(list);
+                updateBadge();
+            }
+            function removeFromWishlist(name) {
+                var list = getWishlist();
+                var filtered = [];
+                for (var i = 0; i < list.length; i++) { if (list[i].name !== name) filtered.push(list[i]); }
+                saveWishlist(filtered);
+                updateBadge();
+                renderWishlist();
+                syncCardHearts();
+            }
+            function updateBadge() {
+                var badge = document.getElementById('wishBadge');
+                var count = getWishlist().length;
+                if (count > 0) {
+                    badge.textContent = count;
+                    badge.classList.add('show');
+                } else {
+                    badge.textContent = '';
+                    badge.classList.remove('show');
+                }
+            }
+            function renderWishlist() {
+                var body = document.getElementById('wlBody');
+                var countEl = document.getElementById('wlCount');
+                var list = getWishlist();
+                countEl.textContent = list.length > 0 ? '(' + list.length + ')' : '';
+                if (list.length === 0) {
+                    body.innerHTML = '<div class="wl-empty"><i class="fa-regular fa-heart"></i><h4>Tu lista está vacía</h4><p>Explora nuestros productos y agrega tus favoritos tocando el corazón ❤️</p></div>';
+                    return;
+                }
+                var html = '';
+                for (var i = 0; i < list.length; i++) {
+                    var it = list[i];
+                    html += '<div class="wl-item">';
+                    html += '<div class="wl-item-img"><img src="' + it.img + '" alt="' + it.name + '"></div>';
+                    html += '<div class="wl-item-info"><h4>' + it.name + '</h4><span class="wl-item-price">' + it.price + '</span></div>';
+                    html += '<button class="wl-item-remove" data-name="' + it.name.replace(/"/g, '&quot;') + '" aria-label="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
+                    html += '</div>';
+                }
+                body.innerHTML = html;
+                var removeBtns = body.querySelectorAll('.wl-item-remove');
+                for (var r = 0; r < removeBtns.length; r++) {
+                    removeBtns[r].addEventListener('click', function () {
+                        removeFromWishlist(this.getAttribute('data-name'));
+                    });
+                }
+            }
+            function syncCardHearts() {
+                var list = getWishlist();
+                var names = [];
+                for (var i = 0; i < list.length; i++) names.push(list[i].name);
+                var cards = document.querySelectorAll('.pc');
+                for (var c = 0; c < cards.length; c++) {
+                    var h3 = cards[c].querySelector('.pc-info h3');
+                    var wishBtn = cards[c].querySelector('.pc-wish');
+                    if (!h3 || !wishBtn) continue;
+                    var cardName = h3.textContent;
+                    var icon = wishBtn.querySelector('i');
+                    if (names.indexOf(cardName) >= 0) {
+                        wishBtn.classList.add('liked');
+                        if (icon) { icon.classList.remove('fa-regular'); icon.classList.add('fa-solid'); }
+                    } else {
+                        wishBtn.classList.remove('liked');
+                        if (icon) { icon.classList.remove('fa-solid'); icon.classList.add('fa-regular'); }
+                    }
+                }
+            }
+
+            var wlOverlay = document.getElementById('wlOverlay');
+            var wlClose = document.getElementById('wlClose');
+            var wishlistBtn = document.getElementById('wishlistBtn');
+
+            if (wishlistBtn) {
+                wishlistBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    renderWishlist();
+                    wlOverlay.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            if (wlClose) {
+                wlClose.addEventListener('click', function () {
+                    wlOverlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                });
+            }
+            if (wlOverlay) {
+                wlOverlay.addEventListener('click', function (e) {
+                    if (e.target === wlOverlay) {
+                        wlOverlay.classList.remove('open');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && wlOverlay && wlOverlay.classList.contains('open')) {
+                    wlOverlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            var allHearts = document.querySelectorAll('.pc-wish');
+            for (var h = 0; h < allHearts.length; h++) {
+                allHearts[h].addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var card = this.closest('.pc');
+                    if (!card) return;
+                    var name = card.querySelector('.pc-info h3').textContent;
+                    var imgEl = card.querySelector('.pc-img-wrap img');
+                    var priceEl = card.querySelector('.pc-price .now') || card.querySelector('.pc-price .regular');
+                    var img = imgEl ? imgEl.src : '';
+                    var price = priceEl ? priceEl.textContent : '';
+
+                    this.classList.toggle('liked');
+                    var icon = this.querySelector('i');
+                    if (this.classList.contains('liked')) {
+                        icon.classList.remove('fa-regular');
+                        icon.classList.add('fa-solid');
+                        addToWishlist({ name: name, img: img, price: price });
+                    } else {
+                        icon.classList.remove('fa-solid');
+                        icon.classList.add('fa-regular');
+                        removeFromWishlist(name);
+                    }
+                });
+            }
+
+            updateBadge();
+            syncCardHearts();
+        })();
     </script>
 </body>
 
