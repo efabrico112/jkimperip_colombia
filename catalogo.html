@@ -639,6 +639,593 @@
                 grid-template-columns: 1fr;
                 gap: 25px
             }
+
+            .pdm-layout {
+                flex-direction: column
+            }
+
+            .pdm-gallery {
+                flex-direction: column-reverse;
+                max-width: 100%
+            }
+
+            .pdm-thumbs {
+                flex-direction: row;
+                max-height: none;
+                overflow-x: auto;
+                overflow-y: hidden;
+                gap: 8px
+            }
+
+            .pdm-thumb {
+                width: 56px;
+                height: 56px
+            }
+
+            .pdm-main-img {
+                height: 380px
+            }
+
+            .pdm-info {
+                padding: 20px
+            }
+
+            .pdm-title {
+                font-size: 1.2rem
+            }
+
+            .pdm-price-now {
+                font-size: 1.8rem
+            }
+
+            .pdm-actions {
+                flex-direction: column
+            }
+
+            .pdm-qty {
+                width: 100%;
+                justify-content: center
+            }
+
+            .pdm-add-cart {
+                width: 100%
+            }
+
+            .pdm-wa-row {
+                flex-direction: column
+            }
+
+            .pdm-wa-btn {
+                flex: 1
+            }
+
+            .pdm-wish-btn {
+                width: 100%
+            }
+        }
+
+        /* ── PRODUCT DETAIL MODAL ── */
+        .pdm-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .55);
+            z-index: 5000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s;
+            overflow-y: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 30px 20px
+        }
+
+        .pdm-overlay.open {
+            opacity: 1;
+            visibility: visible
+        }
+
+        .pdm-container {
+            background: var(--white);
+            border-radius: 12px;
+            max-width: 1100px;
+            width: 100%;
+            position: relative;
+            transform: translateY(30px) scale(.97);
+            transition: transform .35s;
+            overflow: hidden
+        }
+
+        .pdm-overlay.open .pdm-container {
+            transform: translateY(0) scale(1)
+        }
+
+        .pdm-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .06);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--black);
+            cursor: pointer;
+            z-index: 10;
+            transition: all .3s
+        }
+
+        .pdm-close:hover {
+            background: rgba(0, 0, 0, .12)
+        }
+
+        .pdm-layout {
+            display: flex;
+            gap: 0
+        }
+
+        .pdm-gallery {
+            flex: 0 0 55%;
+            display: flex;
+            gap: 10px;
+            padding: 24px;
+            background: var(--cream)
+        }
+
+        .pdm-thumbs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+            max-height: 520px
+        }
+
+        .pdm-thumb {
+            width: 68px;
+            height: 68px;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color .2s;
+            flex-shrink: 0
+        }
+
+        .pdm-thumb.active {
+            border-color: var(--black)
+        }
+
+        .pdm-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .pdm-main {
+            flex: 1;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden
+        }
+
+        .pdm-main-img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            display: block
+        }
+
+        .pdm-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .9);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: .9rem;
+            color: var(--black);
+            transition: all .2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .1)
+        }
+
+        .pdm-nav:hover {
+            background: var(--white);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .2)
+        }
+
+        .pdm-nav.prev {
+            left: 12px
+        }
+
+        .pdm-nav.next {
+            right: 12px
+        }
+
+        .pdm-share {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .9);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: .85rem;
+            color: var(--gray-dark)
+        }
+
+        .pdm-info {
+            flex: 0 0 45%;
+            padding: 32px 30px;
+            overflow-y: auto;
+            max-height: 580px
+        }
+
+        .pdm-breadcrumb {
+            font-size: .72rem;
+            color: var(--gray-mid);
+            margin-bottom: 14px;
+            letter-spacing: .3px
+        }
+
+        .pdm-breadcrumb span {
+            color: var(--black);
+            font-weight: 600
+        }
+
+        .pdm-title {
+            font-family: var(--font-body);
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.35;
+            margin-bottom: 6px;
+            color: var(--black)
+        }
+
+        .pdm-ref {
+            font-size: .72rem;
+            color: var(--gray-mid);
+            margin-bottom: 18px;
+            letter-spacing: .3px
+        }
+
+        .pdm-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 6px
+        }
+
+        .pdm-price-now {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: var(--black)
+        }
+
+        .pdm-price-old {
+            font-size: 1rem;
+            color: var(--gray-mid);
+            text-decoration: line-through
+        }
+
+        .pdm-discount {
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--accent)
+        }
+
+        .pdm-installments {
+            font-size: .78rem;
+            color: var(--gray-dark);
+            margin-bottom: 22px;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .pdm-installments .addi-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #7B61FF;
+            color: white;
+            font-size: .6rem;
+            font-weight: 800
+        }
+
+        .pdm-section-label {
+            font-size: .78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .8px;
+            margin-bottom: 10px;
+            color: var(--black);
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .pdm-size-guide {
+            font-size: .72rem;
+            font-weight: 600;
+            color: var(--black);
+            text-decoration: underline;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: .5px
+        }
+
+        .pdm-sizes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px
+        }
+
+        .pdm-size {
+            min-width: 44px;
+            height: 40px;
+            border: 1.5px solid #ddd;
+            border-radius: 6px;
+            background: var(--white);
+            font-size: .82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 12px;
+            color: var(--black)
+        }
+
+        .pdm-size:hover {
+            border-color: var(--black)
+        }
+
+        .pdm-size.active {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black)
+        }
+
+        .pdm-size.out {
+            color: #ccc;
+            border-color: #eee;
+            cursor: not-allowed;
+            position: relative
+        }
+
+        .pdm-size.out::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: #ccc;
+            transform: rotate(-45deg)
+        }
+
+        .pdm-color-row {
+            margin-bottom: 20px
+        }
+
+        .pdm-color-label {
+            font-size: .78rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--black)
+        }
+
+        .pdm-color-label span {
+            font-weight: 400;
+            color: var(--gray-dark)
+        }
+
+        .pdm-swatches {
+            display: flex;
+            gap: 8px
+        }
+
+        .pdm-swatch {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all .2s
+        }
+
+        .pdm-swatch.active {
+            border-color: var(--black);
+            box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--black)
+        }
+
+        .pdm-actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: stretch
+        }
+
+        .pdm-qty {
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden
+        }
+
+        .pdm-qty button {
+            width: 40px;
+            height: 44px;
+            border: none;
+            background: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: var(--black);
+            transition: background .2s
+        }
+
+        .pdm-qty button:hover {
+            background: var(--cream)
+        }
+
+        .pdm-qty-val {
+            width: 36px;
+            text-align: center;
+            font-weight: 700;
+            font-size: .95rem
+        }
+
+        .pdm-add-cart {
+            flex: 1;
+            height: 46px;
+            border-radius: 25px;
+            background: var(--black);
+            color: var(--white);
+            font-size: .85rem;
+            font-weight: 700;
+            letter-spacing: .5px;
+            border: none;
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .pdm-add-cart:hover {
+            background: #333
+        }
+
+        .pdm-wa-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px
+        }
+
+        .pdm-wa-btn {
+            flex: 1;
+            height: 46px;
+            border-radius: 25px;
+            border: 1.5px solid #25D366;
+            background: var(--white);
+            color: #25D366;
+            font-size: .85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all .3s;
+            text-decoration: none
+        }
+
+        .pdm-wa-btn:hover {
+            background: #25D366;
+            color: var(--white)
+        }
+
+        .pdm-wa-btn i {
+            font-size: 1.2rem
+        }
+
+        .pdm-wish-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 8px;
+            border: 1.5px solid #ddd;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: var(--gray-mid);
+            transition: all .2s
+        }
+
+        .pdm-wish-btn:hover,
+        .pdm-wish-btn.liked {
+            color: var(--accent);
+            border-color: var(--accent)
+        }
+
+        .pdm-extra-link {
+            font-size: .78rem;
+            color: var(--gray-dark);
+            text-align: center;
+            margin-bottom: 14px;
+            cursor: pointer
+        }
+
+        .pdm-extra-link:hover {
+            color: var(--black)
+        }
+
+        .pdm-details-toggle {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--black);
+            cursor: pointer;
+            padding: 12px 0;
+            border-top: 1px solid #eee;
+            user-select: none
+        }
+
+        .pdm-details-toggle i {
+            font-size: .7rem;
+            transition: transform .3s
+        }
+
+        .pdm-details-toggle.open i {
+            transform: rotate(90deg)
+        }
+
+        .pdm-details-body {
+            display: none;
+            padding: 0 0 16px;
+            font-size: .82rem;
+            color: var(--gray-dark);
+            line-height: 1.7
+        }
+
+        .pdm-details-body.show {
+            display: block
+        }
+
+        @media(max-width:992px) {
+            .pdm-layout {
+                flex-direction: column
+            }
+
+            .pdm-gallery {
+                flex: none;
+                max-width: 100%
+            }
+
+            .pdm-info {
+                flex: none;
+                max-height: none
+            }
         }
     </style>
 </head>
@@ -883,8 +1470,76 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/573000000000" class="wa-btn" target="_blank" rel="noopener"><i
+    <a href="https://wa.me/573002963698" class="wa-btn" target="_blank" rel="noopener"><i
             class="fa-brands fa-whatsapp"></i></a>
+
+    <!-- ── PRODUCT DETAIL MODAL ── -->
+    <div class="pdm-overlay" id="pdmOverlay">
+        <div class="pdm-container">
+            <button class="pdm-close" id="pdmClose" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
+            <div class="pdm-layout">
+                <div class="pdm-gallery">
+                    <div class="pdm-thumbs" id="pdmThumbs"></div>
+                    <div class="pdm-main">
+                        <img class="pdm-main-img" id="pdmMainImg" src="" alt="Producto">
+                        <button class="pdm-nav prev" id="pdmPrev"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="pdm-nav next" id="pdmNext"><i class="fa-solid fa-chevron-right"></i></button>
+                        <button class="pdm-share"><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+                    </div>
+                </div>
+                <div class="pdm-info">
+                    <div class="pdm-breadcrumb">Inicio / Catálogo / <span id="pdmBreadcrumb">Producto</span></div>
+                    <h2 class="pdm-title" id="pdmTitle"></h2>
+                    <div class="pdm-ref" id="pdmRef">REF: 000000 | Disponible</div>
+                    <div class="pdm-price-row">
+                        <span class="pdm-price-now" id="pdmPriceNow"></span>
+                        <span class="pdm-price-old" id="pdmPriceOld"></span>
+                        <span class="pdm-discount" id="pdmDiscount"></span>
+                    </div>
+                    <div class="pdm-installments">
+                        <span class="addi-badge">A</span>
+                        Paga con <strong>Addi</strong> en hasta 6 cuotas. <a href="#"
+                            style="color:var(--accent);font-size:.72rem">Pide tu cupo</a>
+                    </div>
+                    <div class="pdm-section-label">Talla <span class="pdm-size-guide">Guía de Tallas</span></div>
+                    <div class="pdm-sizes" id="pdmSizes"></div>
+                    <div class="pdm-color-row">
+                        <div class="pdm-color-label">Color: <span id="pdmColorName">Negro</span></div>
+                        <div class="pdm-swatches" id="pdmSwatches">
+                            <div class="pdm-swatch active" style="background:#1a1a1a" data-color="Negro"></div>
+                        </div>
+                    </div>
+                    <div class="pdm-actions">
+                        <div class="pdm-qty">
+                            <button id="pdmQtyMinus">−</button>
+                            <span class="pdm-qty-val" id="pdmQtyVal">1</span>
+                            <button id="pdmQtyPlus">+</button>
+                        </div>
+                        <button class="pdm-add-cart">Añadir al carrito</button>
+                    </div>
+                    <div class="pdm-wa-row">
+                        <a href="#" class="pdm-wa-btn" id="pdmWaBtn" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-whatsapp"></i> Comprar por WhatsApp
+                        </a>
+                        <button class="pdm-wish-btn" id="pdmWish" aria-label="Favorito">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="pdm-extra-link">¿Dónde puedo probarlo?</div>
+                    <div class="pdm-details-toggle" id="pdmDetailsToggle">
+                        <i class="fa-solid fa-plus"></i> Ver más detalles
+                    </div>
+                    <div class="pdm-details-body" id="pdmDetailsBody">
+                        <p>Prenda de alta calidad confeccionada con materiales premium. Diseñada para brindar comodidad
+                            y estilo en cualquier ocasión.</p>
+                        <p><strong>Composición:</strong> Algodón 95%, Elastano 5%</p>
+                        <p><strong>Cuidado:</strong> Lavar a máquina a 30°. No usar secadora. Planchar a baja
+                            temperatura.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -897,6 +1552,39 @@
             for (var h = 0; h < hearts.length; h++) { hearts[h].addEventListener('click', function () { this.classList.toggle('liked'); var ic = this.querySelector('i'); if (this.classList.contains('liked')) { ic.classList.remove('fa-regular'); ic.classList.add('fa-solid'); } else { ic.classList.remove('fa-solid'); ic.classList.add('fa-regular'); } }); }
             var sizes = document.querySelectorAll('.pc-sizes span');
             for (var s = 0; s < sizes.length; s++) { sizes[s].addEventListener('click', function (e) { e.stopPropagation(); var sb = this.parentElement.querySelectorAll('span'); for (var k = 0; k < sb.length; k++)sb[k].classList.remove('sel'); this.classList.add('sel'); }); }
+
+            // ── PRODUCT DETAIL MODAL ──
+            var pdmOverlay = document.getElementById('pdmOverlay'), pdmClose = document.getElementById('pdmClose'), pdmMainImg = document.getElementById('pdmMainImg'), pdmThumbs = document.getElementById('pdmThumbs'), pdmTitle = document.getElementById('pdmTitle'), pdmBreadcrumb = document.getElementById('pdmBreadcrumb'), pdmRef = document.getElementById('pdmRef'), pdmPriceNow = document.getElementById('pdmPriceNow'), pdmPriceOld = document.getElementById('pdmPriceOld'), pdmDiscount = document.getElementById('pdmDiscount'), pdmSizes = document.getElementById('pdmSizes'), pdmQtyVal = document.getElementById('pdmQtyVal'), pdmWaBtn = document.getElementById('pdmWaBtn'), pdmWish = document.getElementById('pdmWish'), pdmDetailsToggle = document.getElementById('pdmDetailsToggle'), pdmDetailsBody = document.getElementById('pdmDetailsBody');
+            var currentImgIndex = 0, currentImages = [];
+
+            function openProductModal(card) {
+                var imgEl = card.querySelector('.pc-img-wrap img'), name = card.querySelector('.pc-info h3').textContent;
+                var priceRegular = card.querySelector('.pc-price .regular'), priceOld = card.querySelector('.pc-price .old'), priceNow = card.querySelector('.pc-price .now');
+                var sizesEl = card.querySelectorAll('.pc-sizes span'), imgSrc = imgEl ? imgEl.src : '';
+                currentImages = [imgSrc]; currentImgIndex = 0; pdmMainImg.src = imgSrc;
+                pdmThumbs.innerHTML = ''; for (var ti = 0; ti < currentImages.length; ti++) { var thumb = document.createElement('div'); thumb.className = 'pdm-thumb' + (ti === 0 ? ' active' : ''); thumb.innerHTML = '<img src="' + currentImages[ti] + '" alt="Vista">'; (function (idx) { thumb.addEventListener('click', function () { goToImg(idx) }) })(ti); pdmThumbs.appendChild(thumb) }
+                pdmTitle.textContent = name; pdmBreadcrumb.textContent = name;
+                pdmRef.textContent = 'REF: ' + Math.floor(Math.random() * 9e9 + 1e9) + ' | Disponible';
+                if (priceOld && priceNow) { pdmPriceNow.textContent = priceNow.textContent; pdmPriceOld.textContent = priceOld.textContent; pdmPriceOld.style.display = ''; var oldVal = parseInt(priceOld.textContent.replace(/[^0-9]/g, '')), nowVal = parseInt(priceNow.textContent.replace(/[^0-9]/g, '')); if (oldVal > 0) { pdmDiscount.textContent = '-' + Math.round((1 - nowVal / oldVal) * 100) + '%'; pdmDiscount.style.display = '' } } else if (priceRegular) { pdmPriceNow.textContent = priceRegular.textContent; pdmPriceOld.style.display = 'none'; pdmDiscount.style.display = 'none' }
+                pdmSizes.innerHTML = ''; if (sizesEl.length > 0) { for (var si = 0; si < sizesEl.length; si++) { var sizeBtn = document.createElement('button'); sizeBtn.className = 'pdm-size' + (sizesEl[si].classList.contains('sel') ? ' active' : ''); sizeBtn.textContent = sizesEl[si].textContent; sizeBtn.addEventListener('click', function () { var allS = pdmSizes.querySelectorAll('.pdm-size'); for (var ai = 0; ai < allS.length; ai++)allS[ai].classList.remove('active'); this.classList.add('active') }); pdmSizes.appendChild(sizeBtn) } }
+                var selectedSize = '', activeSz = pdmSizes.querySelector('.pdm-size.active'); if (activeSz) selectedSize = activeSz.textContent;
+                pdmWaBtn.href = 'https://wa.me/573002963698?text=' + encodeURIComponent('Hola JK Imperip, me interesa: ' + name + (selectedSize ? ' (Talla ' + selectedSize + ')' : '') + '. ¿Está disponible?');
+                pdmQtyVal.textContent = '1'; pdmOverlay.classList.add('open'); document.body.style.overflow = 'hidden'
+            }
+            function goToImg(idx) { currentImgIndex = idx; pdmMainImg.src = currentImages[idx]; var thumbs = pdmThumbs.querySelectorAll('.pdm-thumb'); for (var ti = 0; ti < thumbs.length; ti++)thumbs[ti].classList.toggle('active', ti === idx) }
+            function closeProductModal() { pdmOverlay.classList.remove('open'); document.body.style.overflow = '' }
+            var allCards = document.querySelectorAll('.pc'); for (var ci = 0; ci < allCards.length; ci++) { allCards[ci].addEventListener('click', function (e) { if (e.target.closest('.pc-wish') || e.target.closest('.pc-add')) return; openProductModal(this) }) }
+            pdmClose.addEventListener('click', closeProductModal);
+            pdmOverlay.addEventListener('click', function (e) { if (e.target === pdmOverlay) closeProductModal() });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && pdmOverlay.classList.contains('open')) closeProductModal() });
+            document.getElementById('pdmPrev').addEventListener('click', function () { goToImg((currentImgIndex - 1 + currentImages.length) % currentImages.length) });
+            document.getElementById('pdmNext').addEventListener('click', function () { goToImg((currentImgIndex + 1) % currentImages.length) });
+            document.getElementById('pdmQtyMinus').addEventListener('click', function () { var v = parseInt(pdmQtyVal.textContent); if (v > 1) pdmQtyVal.textContent = v - 1 });
+            document.getElementById('pdmQtyPlus').addEventListener('click', function () { var v = parseInt(pdmQtyVal.textContent); pdmQtyVal.textContent = v + 1 });
+            pdmWish.addEventListener('click', function () { this.classList.toggle('liked'); var ic = this.querySelector('i'); ic.classList.toggle('fa-regular'); ic.classList.toggle('fa-solid') });
+            pdmDetailsToggle.addEventListener('click', function () { this.classList.toggle('open'); pdmDetailsBody.classList.toggle('show'); var icon = this.querySelector('i'); if (this.classList.contains('open')) { icon.classList.remove('fa-plus'); icon.classList.add('fa-chevron-right') } else { icon.classList.remove('fa-chevron-right'); icon.classList.add('fa-plus') } });
+            pdmSizes.addEventListener('click', function () { var activeSz = pdmSizes.querySelector('.pdm-size.active'); var selectedSize = activeSz ? activeSz.textContent : ''; var name = pdmTitle.textContent; pdmWaBtn.href = 'https://wa.me/573002963698?text=' + encodeURIComponent('Hola JK Imperip, me interesa: ' + name + (selectedSize ? ' (Talla ' + selectedSize + ')' : '') + '. ¿Está disponible?') });
+            var swatches = document.querySelectorAll('.pdm-swatch'); for (var sw = 0; sw < swatches.length; sw++) { swatches[sw].addEventListener('click', function () { var all = document.querySelectorAll('.pdm-swatch'); for (var a = 0; a < all.length; a++)all[a].classList.remove('active'); this.classList.add('active'); document.getElementById('pdmColorName').textContent = this.getAttribute('data-color') }) }
         });
     </script>
 </body>

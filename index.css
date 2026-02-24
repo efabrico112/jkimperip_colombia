@@ -941,3 +941,590 @@ button {
         height: 240px;
     }
 }
+
+/* ══════════════════════════════════════════
+   PRODUCT DETAIL MODAL
+   ══════════════════════════════════════════ */
+.pdm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .55);
+    z-index: 5000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+    overflow-y: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 30px 20px
+}
+
+.pdm-overlay.open {
+    opacity: 1;
+    visibility: visible
+}
+
+.pdm-container {
+    background: var(--white);
+    border-radius: 12px;
+    max-width: 1100px;
+    width: 100%;
+    position: relative;
+    transform: translateY(30px) scale(.97);
+    transition: transform .35s;
+    overflow: hidden
+}
+
+.pdm-overlay.open .pdm-container {
+    transform: translateY(0) scale(1)
+}
+
+.pdm-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .06);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--black);
+    cursor: pointer;
+    z-index: 10;
+    transition: all .3s
+}
+
+.pdm-close:hover {
+    background: rgba(0, 0, 0, .12)
+}
+
+.pdm-layout {
+    display: flex;
+    gap: 0
+}
+
+.pdm-gallery {
+    flex: 0 0 55%;
+    display: flex;
+    gap: 10px;
+    padding: 24px;
+    background: var(--cream)
+}
+
+.pdm-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    max-height: 520px
+}
+
+.pdm-thumb {
+    width: 68px;
+    height: 68px;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color .2s;
+    flex-shrink: 0
+}
+
+.pdm-thumb.active {
+    border-color: var(--black)
+}
+
+.pdm-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.pdm-main {
+    flex: 1;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden
+}
+
+.pdm-main-img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block
+}
+
+.pdm-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .9);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: .9rem;
+    color: var(--black);
+    transition: all .2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1)
+}
+
+.pdm-nav:hover {
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .2)
+}
+
+.pdm-nav.prev {
+    left: 12px
+}
+
+.pdm-nav.next {
+    right: 12px
+}
+
+.pdm-share {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .9);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: .85rem;
+    color: var(--gray-dark)
+}
+
+.pdm-info {
+    flex: 0 0 45%;
+    padding: 32px 30px;
+    overflow-y: auto;
+    max-height: 580px
+}
+
+.pdm-breadcrumb {
+    font-size: .72rem;
+    color: var(--gray-mid);
+    margin-bottom: 14px;
+    letter-spacing: .3px
+}
+
+.pdm-breadcrumb span {
+    color: var(--black);
+    font-weight: 600
+}
+
+.pdm-title {
+    font-family: var(--font-body);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 6px;
+    color: var(--black)
+}
+
+.pdm-ref {
+    font-size: .72rem;
+    color: var(--gray-mid);
+    margin-bottom: 18px;
+    letter-spacing: .3px
+}
+
+.pdm-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px
+}
+
+.pdm-price-now {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--black)
+}
+
+.pdm-price-old {
+    font-size: 1rem;
+    color: var(--gray-mid);
+    text-decoration: line-through
+}
+
+.pdm-discount {
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--accent)
+}
+
+.pdm-installments {
+    font-size: .78rem;
+    color: var(--gray-dark);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 6px
+}
+
+.pdm-installments .addi-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #7B61FF;
+    color: white;
+    font-size: .6rem;
+    font-weight: 800
+}
+
+.pdm-section-label {
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    margin-bottom: 10px;
+    color: var(--black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.pdm-size-guide {
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--black);
+    text-decoration: underline;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: .5px
+}
+
+.pdm-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px
+}
+
+.pdm-size {
+    min-width: 44px;
+    height: 40px;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    background: var(--white);
+    font-size: .82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    color: var(--black)
+}
+
+.pdm-size:hover {
+    border-color: var(--black)
+}
+
+.pdm-size.active {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black)
+}
+
+.pdm-size.out {
+    color: #ccc;
+    border-color: #eee;
+    cursor: not-allowed;
+    position: relative
+}
+
+.pdm-size.out::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    transform: rotate(-45deg)
+}
+
+.pdm-color-row {
+    margin-bottom: 20px
+}
+
+.pdm-color-label {
+    font-size: .78rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--black)
+}
+
+.pdm-color-label span {
+    font-weight: 400;
+    color: var(--gray-dark)
+}
+
+.pdm-swatches {
+    display: flex;
+    gap: 8px
+}
+
+.pdm-swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all .2s
+}
+
+.pdm-swatch.active {
+    border-color: var(--black);
+    box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--black)
+}
+
+.pdm-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: stretch
+}
+
+.pdm-qty {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden
+}
+
+.pdm-qty button {
+    width: 40px;
+    height: 44px;
+    border: none;
+    background: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--black);
+    transition: background .2s
+}
+
+.pdm-qty button:hover {
+    background: var(--cream)
+}
+
+.pdm-qty-val {
+    width: 36px;
+    text-align: center;
+    font-weight: 700;
+    font-size: .95rem
+}
+
+.pdm-add-cart {
+    flex: 1;
+    height: 46px;
+    border-radius: 25px;
+    background: var(--black);
+    color: var(--white);
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s
+}
+
+.pdm-add-cart:hover {
+    background: #333
+}
+
+.pdm-wa-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px
+}
+
+.pdm-wa-btn {
+    flex: 1;
+    height: 46px;
+    border-radius: 25px;
+    border: 1.5px solid #25D366;
+    background: var(--white);
+    color: #25D366;
+    font-size: .85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all .3s;
+    text-decoration: none
+}
+
+.pdm-wa-btn:hover {
+    background: #25D366;
+    color: var(--white)
+}
+
+.pdm-wa-btn i {
+    font-size: 1.2rem
+}
+
+.pdm-wish-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 8px;
+    border: 1.5px solid #ddd;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--gray-mid);
+    transition: all .2s
+}
+
+.pdm-wish-btn:hover,
+.pdm-wish-btn.liked {
+    color: var(--accent);
+    border-color: var(--accent)
+}
+
+.pdm-extra-link {
+    font-size: .78rem;
+    color: var(--gray-dark);
+    text-align: center;
+    margin-bottom: 14px;
+    cursor: pointer
+}
+
+.pdm-extra-link:hover {
+    color: var(--black)
+}
+
+.pdm-details-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--black);
+    cursor: pointer;
+    padding: 12px 0;
+    border-top: 1px solid #eee;
+    -webkit-user-select: none;
+    user-select: none
+}
+
+.pdm-details-toggle i {
+    font-size: .7rem;
+    transition: transform .3s
+}
+
+.pdm-details-toggle.open i {
+    transform: rotate(90deg)
+}
+
+.pdm-details-body {
+    display: none;
+    padding: 0 0 16px;
+    font-size: .82rem;
+    color: var(--gray-dark);
+    line-height: 1.7
+}
+
+.pdm-details-body.show {
+    display: block
+}
+
+@media(max-width:992px) {
+    .pdm-layout {
+        flex-direction: column
+    }
+
+    .pdm-gallery {
+        flex: none;
+        max-width: 100%
+    }
+
+    .pdm-info {
+        flex: none;
+        max-height: none
+    }
+}
+
+@media(max-width:600px) {
+    .pdm-gallery {
+        flex-direction: column-reverse
+    }
+
+    .pdm-thumbs {
+        flex-direction: row;
+        max-height: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 8px
+    }
+
+    .pdm-thumb {
+        width: 56px;
+        height: 56px
+    }
+
+    .pdm-main-img {
+        height: 380px
+    }
+
+    .pdm-info {
+        padding: 20px
+    }
+
+    .pdm-title {
+        font-size: 1.2rem
+    }
+
+    .pdm-price-now {
+        font-size: 1.8rem
+    }
+
+    .pdm-actions {
+        flex-direction: column
+    }
+
+    .pdm-qty {
+        width: 100%;
+        justify-content: center
+    }
+
+    .pdm-add-cart {
+        width: 100%
+    }
+
+    .pdm-wa-row {
+        flex-direction: column
+    }
+
+    .pdm-wa-btn {
+        flex: 1
+    }
+
+    .pdm-wish-btn {
+        width: 100%
+    }
+}
