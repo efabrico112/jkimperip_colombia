@@ -2397,6 +2397,24 @@
             align-items: center
         }
 
+        .wl-item-clickable {
+            cursor: pointer;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+            transition: opacity .2s
+        }
+
+        .wl-item-clickable:hover {
+            opacity: .7
+        }
+
+        .wl-item-clickable:hover .wl-item-info h4 {
+            color: var(--accent)
+        }
+
         .wl-item-img {
             width: 80px;
             height: 100px;
@@ -3067,9 +3085,9 @@
                     <h4>Soporte</h4>
                     <ul>
                         <li><a href="contacto.html">Contacto</a></li>
-                        <li><a href="#">Envíos y Devoluciones</a></li>
-                        <li><a href="#">Preguntas Frecuentes</a></li>
-                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="envios.html">Envíos y Devoluciones</a></li>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                        <li><a href="terminos.html">Términos y Condiciones</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -3405,6 +3423,9 @@
                 document.body.style.overflow = 'hidden';
             }
 
+            // Expose globally for wishlist drawer
+            window.__openProductModal = openProductModal;
+
             function goToImg(idx) {
                 currentImgIndex = idx;
                 pdmMainImg.src = currentImages[idx];
@@ -3567,16 +3588,45 @@
                 for (var i = 0; i < list.length; i++) {
                     var it = list[i];
                     html += '<div class="wl-item">';
+                    html += '<div class="wl-item-clickable" data-product="' + it.name.replace(/"/g, '&quot;') + '">';
                     html += '<div class="wl-item-img"><img src="' + it.img + '" alt="' + it.name + '"></div>';
                     html += '<div class="wl-item-info"><h4>' + it.name + '</h4><span class="wl-item-price">' + it.price + '</span></div>';
+                    html += '</div>';
                     html += '<button class="wl-item-remove" data-name="' + it.name.replace(/"/g, '&quot;') + '" aria-label="Eliminar"><i class="fa-solid fa-trash-can"></i></button>';
                     html += '</div>';
                 }
                 body.innerHTML = html;
+                // Attach click-to-view handlers
+                var clickAreas = body.querySelectorAll('.wl-item-clickable');
+                for (var ca = 0; ca < clickAreas.length; ca++) {
+                    clickAreas[ca].addEventListener('click', function () {
+                        var productName = this.getAttribute('data-product');
+                        // Find matching product card on the page
+                        var allCards = document.querySelectorAll('.pc');
+                        var matchedCard = null;
+                        for (var mc = 0; mc < allCards.length; mc++) {
+                            var h3 = allCards[mc].querySelector('.pc-info h3');
+                            if (h3 && h3.textContent === productName) {
+                                matchedCard = allCards[mc];
+                                break;
+                            }
+                        }
+                        if (matchedCard && window.__openProductModal) {
+                            // Close wishlist drawer and open product modal
+                            wlOverlay.classList.remove('open');
+                            document.body.style.overflow = '';
+                            window.__openProductModal(matchedCard);
+                        } else {
+                            // Product not on this page, navigate to catalogo
+                            window.location.href = 'catalogo.html?product=' + encodeURIComponent(productName);
+                        }
+                    });
+                }
                 // Attach remove handlers
                 var removeBtns = body.querySelectorAll('.wl-item-remove');
                 for (var r = 0; r < removeBtns.length; r++) {
-                    removeBtns[r].addEventListener('click', function () {
+                    removeBtns[r].addEventListener('click', function (e) {
+                        e.stopPropagation();
                         removeFromWishlist(this.getAttribute('data-name'));
                     });
                 }
