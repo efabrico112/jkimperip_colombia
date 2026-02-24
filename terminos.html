@@ -744,7 +744,8 @@
             <p><strong>JK Imperip</strong> es una marca de moda urbana legalmente constituida y registrada en la
                 <strong>Cámara de Comercio de Colombia</strong>. Operamos desde la ciudad de Medellín, Antioquia, y nos
                 dedicamos a la comercialización de prendas de vestir, calzado y accesorios de moda a través de canales
-                digitales.</p>
+                digitales.
+            </p>
             <ul>
                 <li><strong>Razón social:</strong> JK Imperip</li>
                 <li><strong>Ubicación:</strong> Medellín, Antioquia, Colombia</li>
@@ -953,7 +954,8 @@
         <div class="legal-section" id="s12">
             <h2><span class="section-num">12</span> Legislación Aplicable y Jurisdicción</h2>
             <p>Los presentes Términos y Condiciones se rigen e interpretan de acuerdo con las leyes de la
-                <strong>República de Colombia</strong>.</p>
+                <strong>República de Colombia</strong>.
+            </p>
             <p>Para la resolución de cualquier controversia que surja en relación con estos términos o con la
                 compraventa de productos, las partes se someterán a la jurisdicción de los jueces y tribunales
                 competentes de la ciudad de <strong>Medellín, Antioquia</strong>, Colombia.</p>
@@ -1054,13 +1056,16 @@
         document.addEventListener('DOMContentLoaded', function () {
             var hb = document.getElementById('hamburger');
             var mm = document.getElementById('mobileMenu');
-            hb.addEventListener('click', function () {
-                hb.classList.toggle('active');
-                mm.classList.toggle('open');
-                document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
-            });
+            if (hb && mm) {
+                hb.addEventListener('click', function () {
+                    hb.classList.toggle('active');
+                    mm.classList.toggle('open');
+                    document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+                });
+            }
             window.addEventListener('scroll', function () {
-                document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+                var hdr = document.getElementById('header');
+                if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40);
             });
         });
     </script>

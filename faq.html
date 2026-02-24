@@ -1115,14 +1115,17 @@
             /* Hamburger */
             var hb = document.getElementById('hamburger');
             var mm = document.getElementById('mobileMenu');
-            hb.addEventListener('click', function () {
-                hb.classList.toggle('active');
-                mm.classList.toggle('open');
-                document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
-            });
+            if (hb && mm) {
+                hb.addEventListener('click', function () {
+                    hb.classList.toggle('active');
+                    mm.classList.toggle('open');
+                    document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+                });
+            }
             /* Header scroll */
             window.addEventListener('scroll', function () {
-                document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+                var hdr = document.getElementById('header');
+                if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 40);
             });
             /* FAQ Accordion */
             var questions = document.querySelectorAll('.faq-question');
