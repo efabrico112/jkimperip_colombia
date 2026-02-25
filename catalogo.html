@@ -1979,39 +1979,145 @@
         </div>
     </div>
 
+    <script src="productos-db.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // ── HAMBURGER & SCROLL ──
             var hb = document.getElementById('hamburger'), mm = document.getElementById('mobileMenu');
             hb.addEventListener('click', function () { hb.classList.toggle('active'); mm.classList.toggle('open'); document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : ''; });
             window.addEventListener('scroll', function () { document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40); });
-            var hearts = document.querySelectorAll('.pc-wish');
-            for (var h = 0; h < hearts.length; h++) { hearts[h].addEventListener('click', function () { this.classList.toggle('liked'); var ic = this.querySelector('i'); if (this.classList.contains('liked')) { ic.classList.remove('fa-regular'); ic.classList.add('fa-solid'); } else { ic.classList.remove('fa-solid'); ic.classList.add('fa-regular'); } }); }
-            var sizes = document.querySelectorAll('.pc-sizes span');
-            for (var s = 0; s < sizes.length; s++) { sizes[s].addEventListener('click', function (e) { e.stopPropagation(); var sb = this.parentElement.querySelectorAll('span'); for (var k = 0; k < sb.length; k++)sb[k].classList.remove('sel'); this.classList.add('sel'); }); }
 
-            // ── FILTER TABS FUNCTIONALITY ──
-            var filterTabs = document.querySelectorAll('.filter-tab');
+            // ══════════════════════════════════════════════
+            // DYNAMIC PRODUCT RENDERING FROM PRODUCTOS_DB
+            // ══════════════════════════════════════════════
+            var productGrid = document.getElementById('productGrid');
             var filterCount = document.querySelector('.filter-count');
-            var productCards = document.querySelectorAll('.pc');
+            var activeCategory = 'Todo';
+            var activeSearch = '';
+
+            function createProductCard(p) {
+                var card = document.createElement('div');
+                card.className = 'pc';
+                card.setAttribute('data-category', p.categoria);
+                card.setAttribute('data-id', p.id);
+
+                var discount = p.precioAnterior ? Math.round((1 - p.precio / p.precioAnterior) * 100) : 0;
+                var cuota3 = formatPrecio(Math.round(p.precio / 3));
+
+                var html = '';
+                html += '<div class="pc-img-wrap">';
+                html += '<img src="' + p.imagen + '" alt="' + p.nombre + '" loading="lazy">';
+                if (p.tag) html += '<span class="pc-tag">' + p.tag + '</span>';
+                html += '<button class="pc-wish" aria-label="Favorito"><i class="fa-regular fa-heart"></i></button>';
+                html += '</div>';
+                html += '<div class="pc-info">';
+                html += '<h3>' + p.nombre + '</h3>';
+                html += '<div class="pc-price">';
+                if (p.precioAnterior) {
+                    html += '<span class="old">' + formatPrecio(p.precioAnterior) + '</span>';
+                    html += '<span class="now">' + formatPrecio(p.precio) + '</span>';
+                    html += '<span class="off">-' + discount + '%</span>';
+                } else {
+                    html += '<span class="regular">' + formatPrecio(p.precio) + '</span>';
+                }
+                html += '</div>';
+                html += '<div class="pc-installments"><span class="addi-badge">A</span> 3 cuotas de <strong>' + cuota3 + '</strong></div>';
+                if (p.tallas && p.tallas.length > 0) {
+                    html += '<div class="pc-sizes">';
+                    for (var t = 0; t < p.tallas.length; t++) {
+                        html += '<span>' + p.tallas[t] + '</span>';
+                    }
+                    html += '</div>';
+                }
+                html += '<button class="pc-add">Agregar al Carrito <i class="fa-solid fa-chevron-right"></i></button>';
+                html += '</div>';
+
+                card.innerHTML = html;
+                return card;
+            }
+
+            function renderProducts(products) {
+                productGrid.innerHTML = '';
+                if (products.length === 0) {
+                    productGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-light,#999)"><i class="fa-solid fa-search" style="font-size:2rem;margin-bottom:12px;display:block"></i><h3 style="margin-bottom:8px">No encontramos productos</h3><p>Intenta con otra búsqueda o categoría</p></div>';
+                }
+                for (var i = 0; i < products.length; i++) {
+                    var card = createProductCard(products[i]);
+                    card.style.animation = 'fadeIn 0.4s ease ' + (i * 0.03) + 's both';
+                    productGrid.appendChild(card);
+                }
+                if (filterCount) filterCount.textContent = products.length + ' producto' + (products.length !== 1 ? 's' : '');
+                // Sync wishlist hearts after rendering
+                if (typeof syncCardHearts === 'function') syncCardHearts();
+            }
+
+            function applyFilters() {
+                var results = window.PRODUCTOS_DB || [];
+                if (activeCategory && activeCategory !== 'Todo') {
+                    results = filtrarPorCategoria(activeCategory);
+                }
+                if (activeSearch && activeSearch.length >= 2) {
+                    var searchResults = buscarProductos(activeSearch);
+                    if (activeCategory && activeCategory !== 'Todo') {
+                        var filtered = [];
+                        for (var i = 0; i < searchResults.length; i++) {
+                            if (searchResults[i].categoria === activeCategory) filtered.push(searchResults[i]);
+                        }
+                        results = filtered;
+                    } else {
+                        results = searchResults;
+                    }
+                }
+                renderProducts(results);
+            }
+
+            // ── FILTER TABS ──
+            var filterTabs = document.querySelectorAll('.filter-tab');
             for (var ft = 0; ft < filterTabs.length; ft++) {
                 filterTabs[ft].addEventListener('click', function () {
                     for (var t = 0; t < filterTabs.length; t++) filterTabs[t].classList.remove('active');
                     this.classList.add('active');
-                    var category = this.textContent;
-                    var visibleCount = 0;
-                    for (var p = 0; p < productCards.length; p++) {
-                        var card = productCards[p];
-                        if (category === 'Todo' || card.getAttribute('data-category') === category) {
-                            card.style.display = '';
-                            card.style.animation = 'fadeIn 0.4s ease';
-                            visibleCount++;
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
-                    if (filterCount) filterCount.textContent = visibleCount + ' producto' + (visibleCount !== 1 ? 's' : '');
+                    activeCategory = this.textContent.trim();
+                    applyFilters();
                 });
             }
+
+            // ── SEARCH BAR ──
+            var searchInput = document.getElementById('catalogSearchInput');
+            if (searchInput) {
+                var searchTimer = null;
+                searchInput.addEventListener('input', function () {
+                    var val = this.value.trim();
+                    clearTimeout(searchTimer);
+                    searchTimer = setTimeout(function () {
+                        activeSearch = val;
+                        applyFilters();
+                    }, 300);
+                });
+            }
+
+            // ── EVENT DELEGATION ON PRODUCT GRID ──
+            productGrid.addEventListener('click', function (e) {
+                // Size selection
+                var sizeSpan = e.target.closest('.pc-sizes span');
+                if (sizeSpan) {
+                    e.stopPropagation();
+                    var siblings = sizeSpan.parentElement.querySelectorAll('span');
+                    for (var k = 0; k < siblings.length; k++) siblings[k].classList.remove('sel');
+                    sizeSpan.classList.add('sel');
+                    return;
+                }
+                // Wish heart (handled by wishlist IIFE via delegation, skip here)
+                if (e.target.closest('.pc-wish')) return;
+                // Add to cart (handled by cart IIFE via delegation, skip here)
+                if (e.target.closest('.pc-add')) return;
+                // Card click → open modal
+                var card = e.target.closest('.pc');
+                if (card) openProductModal(card);
+            });
+
+            // ── INITIAL RENDER ──
+            applyFilters();
 
             // ── PRODUCT DETAIL MODAL ──
             var pdmOverlay = document.getElementById('pdmOverlay'), pdmClose = document.getElementById('pdmClose'), pdmMainImg = document.getElementById('pdmMainImg'), pdmThumbs = document.getElementById('pdmThumbs'), pdmTitle = document.getElementById('pdmTitle'), pdmBreadcrumb = document.getElementById('pdmBreadcrumb'), pdmRef = document.getElementById('pdmRef'), pdmPriceNow = document.getElementById('pdmPriceNow'), pdmPriceOld = document.getElementById('pdmPriceOld'), pdmDiscount = document.getElementById('pdmDiscount'), pdmSizes = document.getElementById('pdmSizes'), pdmQtyVal = document.getElementById('pdmQtyVal'), pdmWaBtn = document.getElementById('pdmWaBtn'), pdmWish = document.getElementById('pdmWish'), pdmDetailsToggle = document.getElementById('pdmDetailsToggle'), pdmDetailsBody = document.getElementById('pdmDetailsBody');
@@ -2031,11 +2137,9 @@
                 pdmWaBtn.href = 'https://wa.me/573002963698?text=' + encodeURIComponent('Hola JK Imperip, me interesa: ' + name + (selectedSize ? ' (Talla ' + selectedSize + ')' : '') + '. ¿Está disponible?');
                 pdmQtyVal.textContent = '1'; pdmOverlay.classList.add('open'); document.body.style.overflow = 'hidden'
             }
-            // Expose globally for wishlist drawer
             window.__openProductModal = openProductModal;
             function goToImg(idx) { currentImgIndex = idx; pdmMainImg.src = currentImages[idx]; var thumbs = pdmThumbs.querySelectorAll('.pdm-thumb'); for (var ti = 0; ti < thumbs.length; ti++)thumbs[ti].classList.toggle('active', ti === idx) }
             function closeProductModal() { pdmOverlay.classList.remove('open'); document.body.style.overflow = '' }
-            var allCards = document.querySelectorAll('.pc'); for (var ci = 0; ci < allCards.length; ci++) { allCards[ci].addEventListener('click', function (e) { if (e.target.closest('.pc-wish') || e.target.closest('.pc-add')) return; openProductModal(this) }) }
             pdmClose.addEventListener('click', closeProductModal);
             pdmOverlay.addEventListener('click', function (e) { if (e.target === pdmOverlay) closeProductModal() });
             document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && pdmOverlay.classList.contains('open')) closeProductModal() });
@@ -2205,11 +2309,14 @@
                 }
             });
 
-            var allHearts = document.querySelectorAll('.pc-wish');
-            for (var h = 0; h < allHearts.length; h++) {
-                allHearts[h].addEventListener('click', function (e) {
+            // ── Event delegation for wishlist hearts on dynamic cards ──
+            var pgGrid = document.getElementById('productGrid');
+            if (pgGrid) {
+                pgGrid.addEventListener('click', function (e) {
+                    var wishBtn = e.target.closest('.pc-wish');
+                    if (!wishBtn) return;
                     e.stopPropagation();
-                    var card = this.closest('.pc');
+                    var card = wishBtn.closest('.pc');
                     if (!card) return;
                     var name = card.querySelector('.pc-info h3').textContent;
                     var imgEl = card.querySelector('.pc-img-wrap img');
@@ -2217,9 +2324,9 @@
                     var img = imgEl ? imgEl.src : '';
                     var price = priceEl ? priceEl.textContent : '';
 
-                    this.classList.toggle('liked');
-                    var icon = this.querySelector('i');
-                    if (this.classList.contains('liked')) {
+                    wishBtn.classList.toggle('liked');
+                    var icon = wishBtn.querySelector('i');
+                    if (wishBtn.classList.contains('liked')) {
                         icon.classList.remove('fa-regular');
                         icon.classList.add('fa-solid');
                         addToWishlist({ name: name, img: img, price: price });
@@ -2396,12 +2503,14 @@
                 if (e.key === 'Escape' && ctOverlay && ctOverlay.classList.contains('open')) closeCartDrawer();
             });
 
-            // ── Hook "Agregar al Carrito" on product cards (.pc-add) ──
-            var allAddBtns = document.querySelectorAll('.pc-add');
-            for (var a = 0; a < allAddBtns.length; a++) {
-                allAddBtns[a].addEventListener('click', function (e) {
+            // ── Event delegation for "Agregar al Carrito" on dynamic product cards ──
+            var pgGridCart = document.getElementById('productGrid');
+            if (pgGridCart) {
+                pgGridCart.addEventListener('click', function (e) {
+                    var addBtn = e.target.closest('.pc-add');
+                    if (!addBtn) return;
                     e.stopPropagation();
-                    var card = this.closest('.pc');
+                    var card = addBtn.closest('.pc');
                     if (!card) return;
                     var name = card.querySelector('.pc-info h3').textContent;
                     var imgEl = card.querySelector('.pc-img-wrap img');
@@ -2410,9 +2519,8 @@
                     var activeSz = card.querySelector('.pc-sizes span.sel');
                     if (activeSz) selectedSize = activeSz.textContent;
                     addToCart({ name: name, img: imgEl ? imgEl.src : '', price: priceEl ? priceEl.textContent : '', size: selectedSize, qty: 1 });
-                    this.textContent = '✓ Agregado';
-                    var btn = this;
-                    setTimeout(function () { btn.innerHTML = 'Agregar al Carrito <i class="fa-solid fa-chevron-right"></i>'; }, 1200);
+                    addBtn.textContent = '✓ Agregado';
+                    setTimeout(function () { addBtn.innerHTML = 'Agregar al Carrito <i class="fa-solid fa-chevron-right"></i>'; }, 1200);
                     openCartDrawer();
                 });
             }
@@ -2448,28 +2556,7 @@
                 });
             }
 
-            // ── FILTER TABS ──
-            var filterTabs = document.querySelectorAll('.filter-tab');
-            var filterCount = document.querySelector('.filter-count');
-            var allProducts = document.querySelectorAll('.pc');
-            for (var ft = 0; ft < filterTabs.length; ft++) {
-                filterTabs[ft].addEventListener('click', function () {
-                    for (var j = 0; j < filterTabs.length; j++) filterTabs[j].classList.remove('active');
-                    this.classList.add('active');
-                    var category = this.textContent.trim();
-                    var visible = 0;
-                    for (var p = 0; p < allProducts.length; p++) {
-                        var cat = allProducts[p].getAttribute('data-category') || '';
-                        if (category === 'Todo' || cat.indexOf(category) >= 0) {
-                            allProducts[p].style.display = '';
-                            visible++;
-                        } else {
-                            allProducts[p].style.display = 'none';
-                        }
-                    }
-                    if (filterCount) filterCount.textContent = visible + ' producto' + (visible !== 1 ? 's' : '');
-                });
-            }
+            // ── FILTER TABS (handled by main script via applyFilters) ──
 
             // ── Init ──
             updateCartBadge();
