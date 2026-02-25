@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -1830,346 +1830,34 @@
             <p>Encuentra tu próximo look favorito</p>
         </div>
 
+        <!-- Search Bar Catalog -->
+        <div class="catalog-search">
+            <div class="catalog-search-inner">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="catalogSearchInput" placeholder="Buscar por nombre, categoría, color..."
+                    autocomplete="off">
+                <button class="catalog-search-clear" id="catalogSearchClear" style="display:none"
+                    aria-label="Limpiar"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+
         <div class="filter-bar">
             <div class="filter-tabs">
                 <button class="filter-tab active">Todo</button>
                 <button class="filter-tab">Conjuntos</button>
                 <button class="filter-tab">Chaquetas</button>
-                <button class="filter-tab">Vestidos</button>
-                <button class="filter-tab">Camisas</button>
-                <button class="filter-tab">Jeans</button>
+                <button class="filter-tab">Abrigos</button>
+                <button class="filter-tab">Elegante</button>
+                <button class="filter-tab">Buzos</button>
+                <button class="filter-tab">Deportivo</button>
                 <button class="filter-tab">Calzado</button>
-                <button class="filter-tab">Lencería</button>
-                <button class="filter-tab">Trajes</button>
-                <button class="filter-tab">Accesorios</button>
+                <button class="filter-tab">Camisetas</button>
             </div>
-            <span class="filter-count">17 productos</span>
+            <span class="filter-count" id="filterCount">32 productos</span>
         </div>
 
-        <div class="product-grid">
-            <!-- 1. DÚO POWER SET — Conjunto Deportivo Pareja (Azul/Blanco) -->
-            <div class="pc" data-category="Conjuntos">
-                <div class="pc-img-wrap"><span class="pc-tag">🔥 Hot</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.41.14 PM (2).jpeg"
-                        alt="Dúo Power Set — Conjunto Deportivo Pareja Azul/Blanco">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
-                        </div><button class="pc-add">LO QUIERO PARA LOS DOS → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Dúo Power Set — Conjunto Deportivo Pareja</h3>
-                    <div class="pc-price"><span class="old">$189.900</span><span class="now">$149.900</span></div>
-                    <p class="pc-installment">3x $49.966 sin interés · ⚡ Últimas 12 unidades</p>
-                </div>
-            </div>
-
-            <!-- 2. DÚO POWER SET — Variante Azul/Dorado -->
-            <div class="pc" data-category="Conjuntos">
-                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.41.14 PM (1).jpeg"
-                        alt="Dúo Power Set — Conjunto Deportivo Pareja Azul/Dorado">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span>M</span><span class="sel">L</span><span>XL</span>
-                        </div><button class="pc-add">LO QUIERO PARA LOS DOS → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Dúo Power Set — Azul Marino/Dorado</h3>
-                    <div class="pc-price"><span class="regular">$189.900</span></div>
-                    <p class="pc-installment">3x $63.300 sin interés</p>
-                </div>
-            </div>
-
-            <!-- 3. HERITAGE SHERPA JACKET — Chaqueta Denim Sherpa Afluencia -->
-            <div class="pc" data-category="Chaquetas">
-                <div class="pc-img-wrap"><span class="pc-tag">🔥 Agotada 2 veces</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.43.04 PM.jpeg"
-                        alt="Heritage Sherpa Jacket — Chaqueta Denim con Forro Borrego">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
-                        </div><button class="pc-add">ESTA CHAQUETA ES MÍA → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Heritage Sherpa Jacket — Denim Afluencia</h3>
-                    <div class="pc-price"><span class="regular">$245.000</span></div>
-                    <p class="pc-installment">3x $81.666 sin interés · 📦 Envío gratis</p>
-                </div>
-            </div>
-
-            <!-- 4. RIVIERA KNIT DRESS — Vestido Tejido Off-Shoulder -->
-            <div class="pc" data-category="Vestidos">
-                <div class="pc-img-wrap"><span class="pc-tag">Limitado</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.43.03 PM (3).jpeg"
-                        alt="Riviera Knit Dress — Vestido Tejido Off-Shoulder B&W">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span>
-                        </div><button class="pc-add">LO NECESITO EN MI CLÓSET → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Riviera Knit Dress — Vestido Off-Shoulder</h3>
-                    <div class="pc-price"><span class="regular">$159.900</span></div>
-                    <p class="pc-installment">3x $53.300 sin interés · 💫 No regresa esta temporada</p>
-                </div>
-            </div>
-
-            <!-- 5. SILK EFFECT SHIRT — Camisa Satinada Hombre -->
-            <div class="pc" data-category="Camisas">
-                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.41.57 PM (3).jpeg"
-                        alt="Silk Effect Shirt — Camisa Satinada Slim Fit Hombre">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
-                        </div><button class="pc-add">QUIERO BRILLAR ESTA NOCHE → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Silk Effect Shirt — Camisa Satinada Slim Fit</h3>
-                    <div class="pc-price"><span class="regular">$129.900</span></div>
-                    <p class="pc-installment">3x $43.300 sin interés · 🔥 Quedan pocas</p>
-                </div>
-            </div>
-
-            <!-- 6. POWER DUO SET — Conjunto Crop Top + Palazzo -->
-            <div class="pc" data-category="Conjuntos">
-                <div class="pc-img-wrap"><span class="pc-tag">-15%</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.51.14 PM.jpeg"
-                        alt="Power Duo Set — Conjunto Crop Top Bustier + Palazzo">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span>M</span><span class="sel">L</span>
-                        </div><button class="pc-add">MI OUTFIT PERFECTO ESTÁ AQUÍ → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Power Duo Set — Crop Top + Palazzo B&W</h3>
-                    <div class="pc-price"><span class="old">$179.900</span><span class="now">$152.900</span></div>
-                    <p class="pc-installment">3x $50.966 sin interés · 💎 Solo 20 sets por talla</p>
-                </div>
-            </div>
-
-            <!-- 7. MIDNIGHT LACE SET — Lencería Premium -->
-            <div class="pc" data-category="Lencería">
-                <div class="pc-img-wrap"><span class="pc-tag">Premium</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.46.48 PM (3).jpeg"
-                        alt="Midnight Lace Set — Lencería Encaje Premium">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span>
-                        </div><button class="pc-add">ME LO MEREZCO → <i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Midnight Lace Set — Lencería de Encaje</h3>
-                    <div class="pc-price"><span class="regular">$89.900</span></div>
-                    <p class="pc-installment">3x $29.966 sin interés · 🎀 Empaque discreto</p>
-                </div>
-            </div>
-
-            <!-- 8. STARDUST WIDE JEANS — Jeans Brillantes -->
-            <div class="pc" data-category="Jeans">
-                <div class="pc-img-wrap"><span class="pc-tag">🔥 Trending</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.49.40 PM (5).jpeg"
-                        alt="Stardust Wide Jeans — Jeans Glitter Wide-Leg">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>6</span><span>8</span><span
-                                class="sel">10</span><span>12</span><span>14</span>
-                        </div><button class="pc-add">VOY A BRILLAR → <i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Stardust Wide Jeans — Glitter Coating</h3>
-                    <div class="pc-price"><span class="regular">$169.900</span></div>
-                    <p class="pc-installment">3x $56.633 sin interés · ⭐ 300 personas viendo ahora</p>
-                </div>
-            </div>
-
-            <!-- 9. GOLDEN BUCKLE SANDAL — Sandalias Charol -->
-            <div class="pc" data-category="Calzado">
-                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.43.02 PM.jpeg"
-                        alt="Golden Buckle Sandal — Sandalia Charol Hebilla Dorada">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>35</span><span>36</span><span
-                                class="sel">37</span><span>38</span><span>39</span>
-                        </div><button class="pc-add">CADA PASO CUENTA → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Golden Buckle Sandal — Charol Dorado</h3>
-                    <div class="pc-price"><span class="regular">$139.900</span></div>
-                    <p class="pc-installment">3x $46.633 sin interés</p>
-                </div>
-            </div>
-
-            <!-- 10. STRIDE PRO SNEAKERS — Tenis Premium -->
-            <div class="pc" data-category="Calzado">
-                <div class="pc-img-wrap"><span class="pc-tag">-25%</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 8.58.58 PM.jpeg"
-                        alt="Stride Pro Sneakers — Tenis Premium Blancos">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>38</span><span>39</span><span
-                                class="sel">40</span><span>41</span><span>42</span>
-                        </div><button class="pc-add">CAMINAR DIFERENTE EMPIEZA HOY → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Stride Pro Sneakers — Tenis Premium</h3>
-                    <div class="pc-price"><span class="old">$249.900</span><span class="now">$187.400</span></div>
-                    <p class="pc-installment">3x $62.466 sin interés · 📦 Envío gratis</p>
-                </div>
-            </div>
-
-            <!-- 11. EXECUTIVE FLEX SUIT — Blazer Casual Hombre -->
-            <div class="pc" data-category="Trajes">
-                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.46.52 PM.jpeg"
-                        alt="Executive Flex Suit — Traje Casual Anti-arrugas">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
-                        </div><button class="pc-add">VESTIR BIEN ES NEGOCIO → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Executive Flex Suit — Traje Casual 2 Piezas</h3>
-                    <div class="pc-price"><span class="regular">$289.900</span></div>
-                    <p class="pc-installment">3x $96.633 sin interés · 🧳 Travel-friendly</p>
-                </div>
-            </div>
-
-            <!-- 12. CLOUD DENIM JACKET — Chaqueta Denim Blanca -->
-            <div class="pc" data-category="Chaquetas">
-                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.51.16 PM.jpeg"
-                        alt="Cloud Denim Jacket — Chaqueta Jean Blanca">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span>M</span><span class="sel">L</span><span>XL</span>
-                        </div><button class="pc-add">ATRÉVETE AL BLANCO → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Cloud Denim Jacket — Chaqueta Blanca Premium</h3>
-                    <div class="pc-price"><span class="regular">$179.900</span></div>
-                    <p class="pc-installment">3x $59.966 sin interés</p>
-                </div>
-            </div>
-
-            <!-- 13. ROUGE STATEMENT BAG — Bolso Rojo -->
-            <div class="pc" data-category="Accesorios">
-                <div class="pc-img-wrap"><span class="pc-tag">Exclusivo</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 7.01.14 PM.jpeg"
-                        alt="Rouge Statement Bag — Bolso Rojo Intenso">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>Único</span>
-                        </div><button class="pc-add">EL ROJO ME DEFINE → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Rouge Statement Bag — Bolso Rojo Power</h3>
-                    <div class="pc-price"><span class="regular">$119.900</span></div>
-                    <p class="pc-installment">3x $39.966 sin interés · ❤️ El color del poder</p>
-                </div>
-            </div>
-
-            <!-- 14. TRENCH COAT CLÁSICO — Gabardina Doble Botonadura -->
-            <div class="pc" data-category="Chaquetas">
-                <div class="pc-img-wrap"><span class="pc-tag">Premium</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.43.03 PM.jpeg"
-                        alt="Trench Coat Heritage — Gabardina Beige Doble Botonadura">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span><span>XL</span>
-                        </div><button class="pc-add">LA ELEGANCIA NO ESPERA → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Trench Coat Heritage — Gabardina Beige</h3>
-                    <div class="pc-price"><span class="regular">$329.900</span></div>
-                    <p class="pc-installment">3x $109.966 sin interés · 💎 Pieza de inversión</p>
-                </div>
-            </div>
-
-            <!-- 15. VESTIDO CUT-OUT ROJO — Bodycon con Detalles -->
-            <div class="pc" data-category="Vestidos">
-                <div class="pc-img-wrap"><span class="pc-tag">🔥 Hot</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.54.16 PM.jpeg"
-                        alt="Vestido Cut-Out Statement — Bodycon con Detalles">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span>
-                        </div><button class="pc-add">ESTA NOCHE ES MÍA → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Vestido Cut-Out Statement — Bodycon Night</h3>
-                    <div class="pc-price"><span class="regular">$149.900</span></div>
-                    <p class="pc-installment">3x $49.966 sin interés · ⚡ Se agota rápido</p>
-                </div>
-            </div>
-
-            <!-- 16. CORSET CUERO — Bustier de Cuero Negro -->
-            <div class="pc" data-category="Accesorios">
-                <div class="pc-img-wrap"><span class="pc-tag">Edición Limitada</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 6.46.48 PM.jpeg"
-                        alt="Corset de Cuero — Bustier Statement Negro">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>S</span><span class="sel">M</span><span>L</span>
-                        </div><button class="pc-add">ATRÉVETE → <i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Corset de Cuero — Bustier Statement Negro</h3>
-                    <div class="pc-price"><span class="regular">$159.900</span></div>
-                    <p class="pc-installment">3x $53.300 sin interés · 🖤 Bold & Beautiful</p>
-                </div>
-            </div>
-
-            <!-- 17. TACONES ELEGANTES — Zapatos de Tacón -->
-            <div class="pc" data-category="Calzado">
-                <div class="pc-img-wrap"><span class="pc-tag">Nuevo</span><button class="pc-wish"
-                        aria-label="Favorito"><i class="fa-regular fa-heart"></i></button><img
-                        src="contenido catalogo/IMPERIP CONTENIDO/WhatsApp Image 2026-02-23 at 7.04.29 PM.jpeg"
-                        alt="Tacones Elegance — Zapatos de Tacón Premium">
-                    <div class="pc-overlay">
-                        <div class="pc-sizes"><span>35</span><span>36</span><span
-                                class="sel">37</span><span>38</span><span>39</span>
-                        </div><button class="pc-add">ELEGANCIA EN CADA PASO → <i
-                                class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
-                <div class="pc-info">
-                    <h3>Tacones Elegance — Zapatos Premium</h3>
-                    <div class="pc-price"><span class="old">$199.900</span><span class="now">$159.900</span></div>
-                    <p class="pc-installment">3x $53.300 sin interés · -20% hoy</p>
-                </div>
-            </div>
+        <div class="product-grid" id="productGrid">
+            <!-- Products will be dynamically rendered by productos-db.js -->
         </div>
     </div>
 
